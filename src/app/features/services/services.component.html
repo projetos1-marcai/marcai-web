@@ -1,1 +1,22 @@
-<p>services works!</p>
+<div class="services-container layout-wrapper">
+  <h1>Serviços</h1>
+  <!-- <div class="filters-container"></div> -->
+
+  <div class="services-container-listing">
+    <div class="services-container-listing-item" *ngFor="let item of services">
+      <div class="provider-wrapper">
+        <div class="image-wrapper">
+          <img [src]="item.logo_url" />
+        </div>
+        <div class="provider-wrapper-info">
+          <h1>{{ item.fornecedor }}</h1>
+        </div>
+      </div>
+      <div class="service-info-wrapper" (click)="goToProduct(item)">
+        <h2>{{ item.titulo }}</h2>
+        <p>{{ item.descricao }}</p>
+        <span>{{ item.valor | currency: 'BRL':'symbol' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

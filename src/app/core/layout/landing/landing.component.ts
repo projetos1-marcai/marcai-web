@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -7,24 +8,18 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-  location: string = 'Campina Grande, PB';
-
   landingForm = new FormGroup({
     search: new FormControl('')
   });
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
-  handleLocation(): void {}
-
-  handleLogin(): void {}
-
-  handleRegistration(): void {}
-
   handleSearch(): void {}
 
-  goToServices(): void {}
+  goToServices(): void {
+    this.router.navigate(['services']);
+  }
 
   goToProviders(): void {}
 }

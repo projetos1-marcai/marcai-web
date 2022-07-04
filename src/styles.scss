@@ -37,12 +37,14 @@ $marcai-web-theme: mat.define-light-theme(
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  --primary-black: #4d4d4d;
+  --primary-black: #616161;
 
   --primary-grey: #a1a6ae;
 
   --primary-orange: #ea5812;
   --darker-orange: #c54102;
+
+  --primary-red: #dd3737;
 
   --primary-purple: #523554;
   --darker-purple: #3a263b;
@@ -65,7 +67,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  color: #4d4d4d;
+  color: #616161;
 
   p {
     margin-bottom: 0 !important;
@@ -91,5 +93,21 @@ body {
     padding: 0px 30px;
     height: 36px;
     min-width: fit-content;
+  }
+
+  .custom-rounded-outline-button {
+    background-color: transparent;
+    border-radius: 25px;
+    color: var(--primary-orange);
+    border: 1px solid var(--primary-orange);
+    padding: 0px 30px;
+    height: 32px;
+    cursor: pointer;
+    min-width: fit-content;
+
+    &.danger {
+      color: var(--primary-red);
+      border: 1px solid var(--primary-red);
+    }
   }
 }

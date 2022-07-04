@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,13 +19,8 @@ import { ServiceComponent } from './features/services/service/service.component'
     ProviderComponent,
     ServiceComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    BrowserAnimationsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, BrowserAnimationsModule, MatIconModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

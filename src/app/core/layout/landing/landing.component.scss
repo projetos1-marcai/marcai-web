@@ -1,50 +1,5 @@
 .landing-container {
-  .landing-nav {
-    background-color: var(--background-grey);
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-
-    &-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100px;
-
-      .nav-logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-          height: 35px;
-          margin: -10px 24px 0 0;
-        }
-      }
-      .nav-location {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        mat-icon {
-          font-size: 22px;
-        }
-
-        p {
-          font-weight: 300;
-          margin: 0 4px 0 6px;
-        }
-
-        strong {
-          cursor: pointer;
-          color: var(--primary-orange);
-        }
-      }
-    }
-  }
   .landing-content {
-    padding-top: 100px;
     &-section {
       &-wrapper {
         display: flex;

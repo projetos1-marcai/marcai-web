@@ -1,1 +1,23 @@
-<p>service works!</p>
+<div class="service-container layout-wrapper">
+  <div class="back-button">
+    <button mat-flat-button class="custom-rounded-outline-button" (click)="backToList()">
+      Voltar
+    </button>
+  </div>
+  <div class="nav-wrapper">
+    <p class="provider-name" (click)="goToProvider()">{{ service.fornecedor }}</p>
+    <mat-icon>chevron_right</mat-icon>
+    <p class="service-name">{{ service.titulo }}</p>
+  </div>
+
+  <div class="service-detail">
+    <div class="title-container">
+      <h1>{{ service.titulo }}</h1>
+      <mat-icon>share</mat-icon>
+    </div>
+    <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span>
+    <div class="description">
+      {{ service.descricao }}
+    </div>
+  </div>
+</div>
