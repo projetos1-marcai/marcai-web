@@ -1,3 +1,5 @@
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
@@ -19,7 +21,15 @@ import { ServiceComponent } from './features/services/service/service.component'
     ProviderComponent,
     ServiceComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, BrowserAnimationsModule, MatIconModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    FormsModule,
+    MatButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
