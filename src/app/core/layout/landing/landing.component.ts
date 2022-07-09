@@ -12,19 +12,20 @@ export class LandingComponent implements OnInit {
   landingForm = new FormGroup({
     search: new FormControl('')
   });
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  handleLocation(): void {}
+  handleLocation(): void { }
 
-  handleLogin(): void {}
+  handleLogin(): void { }
 
-  handleRegistration(): void {}
+  handleRegistration(): void { }
 
-  handleSearch(): void {}
+  handleSearch(): void {
+  }
 
-  goToServices(): void {}
+  goToServices(): void { }
 
-  goToProviders(): void {}
+  goToProviders(): void { }
 }

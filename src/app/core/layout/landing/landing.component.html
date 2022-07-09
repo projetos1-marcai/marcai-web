@@ -13,12 +13,7 @@
         <button mat-button class="custom-basic-button" (click)="handleRegistration()">
           Criar conta
         </button>
-        <button
-          mat-flat-button
-          class="custom-flat-button"
-          (click)="handleLogin()"
-          style="margin-left: 4px"
-        >
+        <button mat-flat-button class="custom-flat-button" (click)="handleLogin()" style="margin-left: 4px">
           Login
         </button>
       </div>
@@ -34,19 +29,9 @@
           <form [formGroup]="landingForm" class="search-container-field">
             <mat-form-field appearance="outline" color="primary">
               <mat-label>Serviço ou fornecedor</mat-label>
-              <input
-                type="text"
-                formControlName="search"
-                matInput
-                placeholder="Serviço ou fornecedor"
-              />
+              <input type="text" formControlName="search" matInput placeholder="Serviço ou fornecedor" />
             </mat-form-field>
-            <button
-              mat-flat-button
-              class="custom-flat-button"
-              (click)="handleSearch()"
-              style="margin-left: 8px"
-            >
+            <button mat-flat-button class="custom-flat-button" (click)="handleSearch()" style="margin-left: 8px">
               Buscar
             </button>
           </form>

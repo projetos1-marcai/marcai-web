@@ -1,0 +1,27 @@
+<div class="landing-container">
+    <div class="landing-content">
+        <div class="landing-content-section">
+            <div class="landing-content-section-wrapper layout-wrapper">
+                <div class="search-container">
+                    <form [formGroup]="searchForm" class="search-container-field">
+                        <mat-form-field appearance="outline" color="primary">
+                            <mat-label>Serviço ou fornecedor</mat-label>
+                            <input type="text" formControlName="search" matInput placeholder="Serviço ou fornecedor" />
+                        </mat-form-field>
+                        <button mat-flat-button class="custom-flat-button" (click)="handleSearch()"
+                            style="margin-left: 8px">
+                            Buscar
+                        </button>
+                    </form>
+                    <ul class="services-list">
+                        <li *ngFor="let service of services">
+                            <button type="button">
+                                <span class="title">{{service.titulo}}</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

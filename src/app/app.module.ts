@@ -9,6 +9,8 @@ import { ServicesComponent } from './features/services/services.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProviderComponent } from './features/providers/provider/provider.component';
 import { ServiceComponent } from './features/services/service/service.component';
+import { ServicesService } from './core/services/service/services.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,12 @@ import { ServiceComponent } from './features/services/service/service.component'
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

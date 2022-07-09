@@ -3,10 +3,12 @@ import { ServicesComponent } from './features/services/services.component';
 import { LandingComponent } from './core/layout/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SearchComponent } from './core/layout/search/search.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'search', component: SearchComponent },
   {
     path: 'providers',
     loadChildren: () =>
@@ -29,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

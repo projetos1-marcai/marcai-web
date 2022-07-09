@@ -10,9 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { SearchComponent } from './layout/search/search.component';
 
 @NgModule({
-  declarations: [LayoutComponent, NavComponent, LandingComponent, HomeComponent],
+  declarations: [LayoutComponent, NavComponent, LandingComponent, HomeComponent, SearchComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -25,4 +26,4 @@ import { MatInputModule } from '@angular/material/input';
   ],
   exports: [LayoutComponent]
 })
-export class CoreModule {}
+export class CoreModule { }
