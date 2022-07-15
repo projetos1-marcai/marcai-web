@@ -1,3 +1,5 @@
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProviderComponent } from './features/providers/provider/provider.component';
 import { ServiceComponent } from './features/services/service/service.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchComponent } from './features/search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProvidersComponent,
     ServicesComponent,
     ProviderComponent,
-    ServiceComponent
+    ServiceComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
     HttpClientModule
   ],

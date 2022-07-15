@@ -1,0 +1,43 @@
+<div class="search-container layout-wrapper">
+  <div class="search-container-field">
+    <mat-form-field appearance="outline" color="primary">
+      <input
+        type="text"
+        [(ngModel)]="search"
+        (keydown.enter)="getSearch()"
+        matInput
+        placeholder="Busque por serviço ou fornecedor"
+      />
+    </mat-form-field>
+    <button
+      mat-flat-button
+      class="custom-flat-button"
+      (click)="getSearch()"
+      style="margin-left: 8px"
+    >
+      Buscar
+    </button>
+  </div>
+  <h1>
+    Buscando por <span style="color: var(--primary-orange)">{{ query }}</span>
+  </h1>
+  <!-- <div class="filters-container"></div> -->
+
+  <div class="search-container-listing" *ngIf="this.type === 'service'">
+    <div class="search-container-listing-item" *ngFor="let item of services">
+      <div class="provider-wrapper">
+        <div class="image-wrapper">
+          <img [src]="item?.logo_url" />
+        </div>
+        <div class="provider-wrapper-info">
+          <h1>{{ item?.fornecedor }}</h1>
+        </div>
+      </div>
+      <div class="service-info-wrapper" (click)="goToService(item)">
+        <h2>{{ item?.titulo }}</h2>
+        <p>{{ item?.descricao }}</p>
+        <span>{{ item?.valor | currency: 'BRL':'symbol' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

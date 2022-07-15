@@ -15,10 +15,14 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleSearch(): void {}
+  handleSearch(): void {
+    const value = this.landingForm.get('search')!.value;
+    if (value !== '') {
+      this.router.navigate([`search`], { queryParams: { q: value } });
+    }
+  }
 
   goToServices(): void {
-    console.log(this.landingForm.get('search'));
     this.router.navigate(['services']);
   }
   handleLocation(): void {}

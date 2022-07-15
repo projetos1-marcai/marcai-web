@@ -18,4 +18,8 @@ export class ServiceService {
   getService(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/service/id/${id}`);
   }
+
+  searchService(query: any): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/service/search/${query}`);
+  }
 }
