@@ -18,8 +18,14 @@ export class LandingComponent implements OnInit {
   handleSearch(): void {}
 
   goToServices(): void {
+    console.log(this.landingForm.get('search'));
     this.router.navigate(['services']);
   }
+  handleLocation(): void {}
+
+  handleLogin(): void {}
+
+  handleRegistration(): void {}
 
   goToProviders(): void {}
 }

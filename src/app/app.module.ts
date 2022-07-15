@@ -12,6 +12,7 @@ import { ServicesComponent } from './features/services/services.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProviderComponent } from './features/providers/provider/provider.component';
 import { ServiceComponent } from './features/services/service/service.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ServiceComponent } from './features/services/service/service.component'
     BrowserAnimationsModule,
     MatIconModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
