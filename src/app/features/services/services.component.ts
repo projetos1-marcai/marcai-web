@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicesComponent implements OnInit {
   services: any[] = [];
+  isLoading: boolean = false;
 
   constructor(private router: Router, private serviceService: ServiceService) {}
 
@@ -17,7 +18,9 @@ export class ServicesComponent implements OnInit {
   }
 
   getServices(): void {
+    this.isLoading = true;
     this.serviceService.getServices().subscribe((data) => {
+      this.isLoading = false;
       this.services = data.services;
     });
   }

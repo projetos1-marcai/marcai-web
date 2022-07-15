@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   type: SearchType = 'service';
 
   services: any = [];
-
+  isLoading: boolean = false;
   constructor(private route: ActivatedRoute, private serviceService: ServiceService) {
     this.route.queryParams.subscribe((params: any) => {
       if (params.q) {
@@ -29,12 +29,15 @@ export class SearchComponent implements OnInit {
   }
 
   getSearch(): void {
+    this.isLoading = true;
     this.serviceService.searchService(this.search ? this.search : this.query).subscribe(
       (data: any) => {
+        this.isLoading = false;
         this.search ? (this.query = this.search) : '';
         this.services = data.services;
       },
       (err: Error) => {
+        this.isLoading = false;
         this.search ? (this.query = this.search) : '';
       }
     );

@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ServiceComponent implements OnInit {
   service: any;
   serviceId?: string;
+  isLoading: boolean = false;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -22,7 +23,9 @@ export class ServiceComponent implements OnInit {
   }
 
   getService(): void {
+    this.isLoading = true;
     this.serviceService.getService(this.serviceId).subscribe((data) => {
+      this.isLoading = false;
       this.service = data.service[0];
     });
   }
