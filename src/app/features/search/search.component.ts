@@ -14,7 +14,7 @@ export class SearchComponent implements OnInit {
   search!: string;
   type: SearchType = 'service';
 
-  services: any;
+  services: any = [];
 
   constructor(private route: ActivatedRoute, private serviceService: ServiceService) {
     this.route.queryParams.subscribe((params: any) => {

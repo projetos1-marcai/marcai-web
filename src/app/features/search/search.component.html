@@ -40,4 +40,9 @@
       </div>
     </div>
   </div>
+
+  <div class="search-container-empty" *ngIf="this.services.length === 0">
+    <img src="/assets/img/empty.jpg" alt="Empty" />
+    <h3>Nenhum resultado encontrado</h3>
+  </div>
 </div>
