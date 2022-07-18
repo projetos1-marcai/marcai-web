@@ -2,7 +2,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
@@ -17,6 +17,8 @@ import { ProviderComponent } from './features/providers/provider/provider.compon
 import { ServiceComponent } from './features/services/service/service.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './features/search/search.component';
+import { AgendaComponent } from './features/services/service/agenda/agenda.component';
+import { CreateComponent } from './features/services/service/create/create.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SearchComponent } from './features/search/search.component';
     ServicesComponent,
     ProviderComponent,
     ServiceComponent,
-    SearchComponent
+    SearchComponent,
+    AgendaComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import { SearchComponent } from './features/search/search.component';
     MatInputModule,
     MatButtonModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

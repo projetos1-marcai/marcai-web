@@ -20,8 +20,9 @@ export class ServicesComponent implements OnInit {
   getServices(): void {
     this.isLoading = true;
     this.serviceService.getServices().subscribe((data) => {
+      console.log(data);
+      this.services = data.servicos;
       this.isLoading = false;
-      this.services = data.services;
     });
   }
 

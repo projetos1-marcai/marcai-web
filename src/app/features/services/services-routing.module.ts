@@ -1,3 +1,5 @@
+import { CreateComponent } from './service/create/create.component';
+import { AgendaComponent } from './service/agenda/agenda.component';
 import { ServiceComponent } from './service/service.component';
 import { ServicesComponent } from './services.component';
 
@@ -11,9 +13,19 @@ const routes: Routes = [
     component: ServicesComponent
   },
   {
+    path: 'create',
+    // canActivate: [AuthGuardService],
+    component: CreateComponent
+  },
+  {
     path: ':id',
     // canActivate: [AuthGuardService],
     component: ServiceComponent
+  },
+  {
+    path: ':id/agenda',
+    // canActivate: [AuthGuardService],
+    component: AgendaComponent
   }
 ];
 

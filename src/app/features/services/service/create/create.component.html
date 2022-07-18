@@ -1,0 +1,21 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="create-container layout-wrapper">
+  <h1>Cadastrar um serviço</h1>
+
+  <form [formGroup]="createForm">
+    <div class="create-container-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Título</mat-label>
+        <input type="text" matInput formControlName="titulo" placeholder="Título" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>CNPJ</mat-label>
+        <input type="number" matInput formControlName="cnpj" placeholder="CNPJ" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input type="textarea" matInput formControlName="descricao" placeholder="Descrição" />
+      </mat-form-field>
+    </div>
+  </form>
+</div>

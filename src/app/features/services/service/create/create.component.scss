@@ -1,0 +1,32 @@
+.create-container {
+  margin: 40px auto;
+  color: var(--primary-black);
+  padding-bottom: 80px !important;
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  &-form {
+    margin-top: 30px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 20px;
+    display: grid;
+
+    mat-form-field:nth-child(1) {
+      grid-row-start: 1;
+      grid-column-start: 1;
+      grid-column-end: 7;
+    }
+    mat-form-field:nth-child(2) {
+      grid-row-start: 1;
+      grid-column-start: 7;
+      grid-column-end: 9;
+    }
+    mat-form-field:nth-child(3) {
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-column-end: 9;
+    }
+  }
+}

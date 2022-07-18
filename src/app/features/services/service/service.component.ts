@@ -25,9 +25,15 @@ export class ServiceComponent implements OnInit {
   getService(): void {
     this.isLoading = true;
     this.serviceService.getService(this.serviceId).subscribe((data) => {
+      console.log(data);
+      this.service = data.servico;
       this.isLoading = false;
-      this.service = data.service[0];
     });
+  }
+
+  goToAgenda(): void {
+    console.log(this.serviceId);
+    // this.router.navigate([`services/${this.serviceId}/agenda`]);
   }
 
   goToProvider(): void {
