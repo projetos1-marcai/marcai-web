@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServiceService } from './../../core/services/service/service.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,11 @@ export class ServicesComponent implements OnInit {
   services: any[] = [];
   isLoading: boolean = false;
 
-  constructor(private router: Router, private serviceService: ServiceService) {}
+  constructor(
+    private router: Router,
+    private serviceService: ServiceService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.getServices();
@@ -19,15 +24,29 @@ export class ServicesComponent implements OnInit {
 
   getServices(): void {
     this.isLoading = true;
-    this.serviceService.getServices().subscribe((data) => {
-      console.log(data);
-      this.services = data.servicos;
-      this.isLoading = false;
-    });
+    this.serviceService.getServices().subscribe(
+      (data) => {
+        console.log(data);
+        this.services = data.servicos;
+        this.isLoading = false;
+      },
+      () => {
+        this.openSnackBar('Ocorreu um erro, tente mais tarde.');
+        this.router.navigate(['']);
+        this.isLoading = false;
+      }
+    );
   }
 
   goToProduct(item: any): void {
     this.router.navigate([`services/${item._id}`]);
+  }
+
+  openSnackBar(value: string) {
+    this._snackBar.open(value, 'Fechar', {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
   }
 }
 
