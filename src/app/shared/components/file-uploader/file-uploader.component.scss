@@ -1,0 +1,61 @@
+.file-input-wrapper {
+  width: 100%;
+  position: relative;
+
+  color: #50555a;
+
+  .file-input-main-label {
+    margin-bottom: 6px;
+  }
+
+  input[type='file'] {
+    display: none;
+  }
+
+  .file-name {
+    display: flex;
+    font-size: 0.6rem;
+    position: absolute;
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    mat-icon {
+      height: 16px;
+      width: 16px;
+      font-size: 16px;
+      margin-left: 4px;
+      color: #18d375;
+    }
+
+    &.error {
+      color: red;
+    }
+  }
+
+  .custom-file-input-label {
+    display: flex;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+
+      p {
+        font-weight: 500;
+      }
+    }
+
+    &.success {
+      border: 2px solid #00bf85;
+    }
+  }
+}

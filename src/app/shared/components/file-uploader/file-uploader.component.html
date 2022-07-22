@@ -1,0 +1,22 @@
+<div class="file-input-wrapper">
+  <p class="file-input-main-label" *ngIf="label">{{ label }}</p>
+  <label class="custom-file-input-label" [ngStyle]="{ border: error ? '2px solid red' : '' }">
+    <div class="custom-file-input-label-wrapper">
+      <p *ngIf="title">{{ title }}</p>
+      <p *ngIf="!title">Selecionar arquivo</p>
+      <mat-icon>upload_file</mat-icon>
+    </div>
+    <input
+      (change)="onUpload($event)"
+      type="file"
+      name="custom-file-input"
+      class="custom-file-input"
+      [accept]="accept"
+    />
+  </label>
+  <p class="file-name" *ngIf="file?.value?.uploaded === true && !error">
+    {{ file?.value?.file?.name }} <mat-icon>check</mat-icon>
+  </p>
+  <p class="file-name error" *ngIf="error === 'invalidFile'">Formato de arquivo inválido</p>
+  <p class="file-name error" *ngIf="error === 'invalidSize'">Arquivo grande (máx: 3MB)</p>
+</div>

@@ -11,15 +11,19 @@ export class ServiceService {
   api: string = environment.apiUrl;
   constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
 
-  getServices(): Observable<any> {
-    return this.http.get(`${this.environmentService.apiUrl}/services`);
-  }
-
   getService(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/service/id/${id}`);
   }
 
+  createService(params: any): Observable<any> {
+    return this.http.post(`${this.environmentService.apiUrl}/service`, params);
+  }
+
   searchService(query: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/service/search/${query}`);
+  }
+
+  getServices(): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/services`);
   }
 }

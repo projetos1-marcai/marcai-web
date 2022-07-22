@@ -13,20 +13,50 @@
     gap: 20px;
     display: grid;
 
-    mat-form-field:nth-child(1) {
+    :nth-child(1) {
       grid-row-start: 1;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    :nth-child(2) {
+      grid-row-start: 2;
       grid-column-start: 1;
       grid-column-end: 7;
     }
-    mat-form-field:nth-child(2) {
-      grid-row-start: 1;
+    :nth-child(3) {
+      grid-row-start: 2;
       grid-column-start: 7;
       grid-column-end: 9;
     }
-    mat-form-field:nth-child(3) {
-      grid-row-start: 2;
+    :nth-child(4) {
+      grid-row-start: 3;
       grid-column-start: 1;
       grid-column-end: 9;
     }
+    :nth-child(5) {
+      grid-row-start: 4;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    :nth-child(6) {
+      grid-row-start: 4;
+      grid-column-start: 3;
+      grid-column-end: 6;
+    }
+    :nth-child(7) {
+      grid-row-start: 4;
+      grid-column-start: 6;
+      grid-column-end: 9;
+
+      display: flex;
+      align-items: center;
+      height: 45px;
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
   }
 }
