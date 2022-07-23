@@ -1,12 +1,13 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="create-container layout-wrapper">
   <h1>Cadastrar um serviço</h1>
+  <h2 class="title-container">Dados do serviço</h2>
 
   <img
     *ngIf="createForm.get('logo')?.value.file !== null"
     [src]="createForm.get('logo')?.value.base64"
     class="image-preview"
-    style="height: 150px; width: auto; max-width: 400px; margin-top: 20px"
+    style="height: 150px; width: auto; max-width: 400px"
   />
   <form [formGroup]="createForm">
     <div class="create-container-form">
@@ -57,6 +58,76 @@
       <mat-slide-toggle color="primary" formControlName="presencial">
         Serviço presencial
       </mat-slide-toggle>
+    </div>
+
+    <div class="create-container-agenda">
+      <h2 class="title-container">Horários disponíveis</h2>
+
+      <div class="create-container-agenda-content">
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Segunda </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Terça </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Quarta </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Quinta </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Sexta </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Sábado </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+        <div class="create-container-agenda-content-item">
+          <div class="create-container-agenda-content-item-day">
+            <mat-slide-toggle color="primary"> Domingo </mat-slide-toggle>
+          </div>
+          <div class="create-container-agenda-content-item-hours">
+            <input type="time" />
+            <input type="time" />
+          </div>
+        </div>
+      </div>
     </div>
   </form>
 
