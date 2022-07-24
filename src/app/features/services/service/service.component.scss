@@ -14,6 +14,7 @@
     margin-bottom: 40px;
 
     color: var(--primary-grey);
+
     .provider-name {
       cursor: pointer;
     }
@@ -42,6 +43,78 @@
         cursor: pointer;
       }
     }
+
+    .available {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary-orange);
+    }
+
+    .description {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: var(--background-grey);
+    }
+  }
+
+  .service-schedule {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+
+
+    .title-container {
+      background-color: var(--secondary-grey);
+      border-radius: 6px;
+      padding: 10px 20px;
+      margin: 25px 0px;
+    }
+
+    .service-schedule-day {
+      background-color: var(--secondary-grey);
+      border-radius: 6px;
+      padding: 10px 10px;
+      // width: 150px;
+      flex-grow: 1;
+      // flex-basis: auto;
+      height: 300px;
+      float: left;
+      // margin-right: 10px;
+    }
+
+    .service-schedule-spacing {
+      float: left;
+      width: 10px;
+      height: 20px;
+    }
+
+    .scheduling-item {
+      background-color: white;
+      margin-top: 10px;
+      border-radius: 6px;
+      padding: 10px 20px;
+      flex-grow: 1;
+      // flex-basis: auto;
+      float: left;
+    }
+
+    // .title-container {
+    //   width: 100%;
+    //   display: flex;
+    //   justify-content: space-between;
+    //   align-items: center;
+
+    //   h1 {
+    //     margin-bottom: 8px;
+    //   }
+
+    //   mat-icon {
+    //     cursor: pointer;
+    //   }
+    // }
+
     .available {
       font-size: 0.8rem;
       font-weight: 600;

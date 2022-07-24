@@ -21,9 +21,75 @@
       {{ service.descricao }}
     </div>
   </div>
-  <div class="actions-container">
+  <div class="service-schedule">
+    <h2 class="title-container">{{"Agenda"}}</h2>
+
+    <div class="service-schedule-days">
+
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Domingo"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[0]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+      <div class="service-schedule-spacing"></div>
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Segunda"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[1]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+      <div class="service-schedule-spacing"></div>
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Terça"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[2]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+      <div class="service-schedule-spacing"></div>
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Quarta"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[3]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+      <div class="service-schedule-spacing"></div>
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Quinta"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[4]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+      <div class="service-schedule-spacing"></div>
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Sexta"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[5]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+      <div class="service-schedule-spacing"></div>
+      <div class="service-schedule-day">
+        <div class="day-title">{{"Sábado"}}</div>
+        <div class="scheduling-item" *ngFor="let item of agenda[6]">
+          {{getSchedulingDuration(item)}}
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- <div class="title-container">
+      <h1>{{ service.titulo }}</h1>
+      <mat-icon>share</mat-icon>
+    </div>
+    <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span>
+    <div class="description">
+      {{ service.descricao }}
+    </div> -->
+  </div>
+  <!-- <div class="actions-container">
     <button mat-flat-button class="custom-flat-button" (click)="goToAgenda()">
       Visualizar horarios disponíveis
     </button>
-  </div>
+  </div> -->
 </div>
