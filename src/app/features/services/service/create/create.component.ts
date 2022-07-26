@@ -1,3 +1,4 @@
+import { AgendaService } from './../../../../core/services/agenda/agenda.service';
 import { Router } from '@angular/router';
 import { ServiceService } from './../../../../core/services/service/service.service';
 import { CATEGORIES, PAYMENT_METHODS } from './../../../../shared/util/util';
@@ -21,15 +22,16 @@ export class CreateComponent implements OnInit {
     categoria: new FormControl('', [Validators.required]),
     descricao: new FormControl('', [Validators.required]),
     logo: new FormControl({ uploaded: false, file: null, base64: null }),
-    presencial: new FormControl(''),
+    presencial: new FormControl(false),
     valor: new FormControl('', [Validators.required]),
     formas_pagamento: new FormControl('', [Validators.required]),
-    disponivel: new FormControl(''),
+    disponivel: new FormControl(true),
     endereco: new FormControl({}),
     fornecedor: new FormControl('')
   });
   constructor(
     private serviceService: ServiceService,
+    private agendaService: AgendaService,
     private router: Router,
     private _snackBar: MatSnackBar
   ) {}
@@ -43,13 +45,15 @@ export class CreateComponent implements OnInit {
 
   onSubmit(): void {
     const params = {
-      ...this.createForm.value
+      ...this.createForm.value,
+      logo_url: this.createForm.get('logo')?.value.base64
     };
 
     this.isLoading = true;
     this.serviceService.createService(params).subscribe(
       (data) => {
         this.isLoading = false;
+        console.log(params);
         this.router.navigate([`service/id/${data._id}`]);
       },
       (err) => {
@@ -57,6 +61,17 @@ export class CreateComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  createAgenda(): void {
+    const params = {
+      id_servico: '',
+      inicio: '',
+      fim: '',
+      dia: ''
+    };
+
+    this.agendaService.createAgenda(params).subscribe((data: any) => {});
   }
 
   openSnackBar(value: string) {
