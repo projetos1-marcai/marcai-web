@@ -7,6 +7,7 @@
     <div class="services-container-listing-item" *ngFor="let item of services">
       <div class="provider-wrapper">
         <div class="image-wrapper">
+          <div class="no-img" *ngIf="!item.logo_url"></div>
           <img [src]="item.logo_url" />
         </div>
         <div class="provider-wrapper-info">

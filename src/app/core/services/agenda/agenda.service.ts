@@ -12,6 +12,6 @@ export class AgendaService {
   constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
 
   createAgenda(params: any): Observable<any> {
-    return this.http.post(`${this.environmentService.apiUrl}/agenda`, params);
+    return this.http.post(`${this.environmentService.apiUrl}/horario`, params);
   }
 }

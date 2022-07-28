@@ -16,7 +16,7 @@ export class ServiceComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private serviceService: ServiceService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.serviceId = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -26,21 +26,10 @@ export class ServiceComponent implements OnInit {
   getService(): void {
     this.isLoading = true;
     this.serviceService.getService(this.serviceId).subscribe((data) => {
-      this.agenda = [
-        data.agenda.domingo,
-        data.agenda.segunda,
-        data.agenda.terca,
-        data.agenda.quarta,
-        data.agenda.quinta,
-        data.agenda.sexta,
-        data.agenda.sabado,
-      ];
-
-      console.log(data.agenda);
+      this.agenda = data.agenda;
       this.service = data.servico;
       this.isLoading = false;
     });
-
   }
 
   goToAgenda(): void {
@@ -70,9 +59,9 @@ export class ServiceComponent implements OnInit {
     var begin = new Date(item.inicio);
     var end = new Date(item.fim);
 
-    var beginString = `${begin.getHours()}:${begin.getMinutes()}`
-    var endString = `${end.getHours()}:${end.getMinutes()}`
+    var beginString = `${begin.getHours()}:${begin.getMinutes()}`;
+    var endString = `${end.getHours()}:${end.getMinutes()}`;
 
-    return beginString + " - " + endString;
+    return beginString + ' - ' + endString;
   }
 }

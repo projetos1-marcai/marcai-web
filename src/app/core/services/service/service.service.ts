@@ -19,6 +19,10 @@ export class ServiceService {
     return this.http.post(`${this.environmentService.apiUrl}/service`, params);
   }
 
+  updateService(id: any, params: any): Observable<any> {
+    return this.http.post(`${this.environmentService.apiUrl}/service/${id}/atualizar`, params);
+  }
+
   searchService(query: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/service/search/${query}`);
   }

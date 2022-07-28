@@ -82,7 +82,12 @@
             padding: 8px 10px;
             border-radius: 5px;
             border: 1px solid var(--border-color);
-            color: var(--primary-grey);
+            color: var(--primary-black);
+
+            &.disabled {
+              opacity: 0.5;
+              pointer-events: none;
+            }
           }
         }
       }

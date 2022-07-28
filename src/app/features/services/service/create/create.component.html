@@ -63,71 +63,139 @@
     <div class="create-container-agenda">
       <h2 class="title-container">Horários disponíveis</h2>
 
-      <div class="create-container-agenda-content">
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Segunda </mat-slide-toggle>
+      <form [formGroup]="agendaForm">
+        <div class="create-container-agenda-content">
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="monday">
+                Segunda
+              </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="mondayStart"
+                [ngClass]="{ disabled: !agendaForm.get('monday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="mondayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('monday')!.value }"
+              />
+            </div>
           </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="tuesday"> Terça </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="tuesdayStart"
+                [ngClass]="{ disabled: !agendaForm.get('tuesday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="tuesdayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('tuesday')!.value }"
+              />
+            </div>
+          </div>
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="wednesday">
+                Quarta
+              </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="wednesdayStart"
+                [ngClass]="{ disabled: !agendaForm.get('wednesday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="wednesdayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('wednesday')!.value }"
+              />
+            </div>
+          </div>
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="thursday">
+                Quinta
+              </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="thursdayStart"
+                [ngClass]="{ disabled: !agendaForm.get('thursday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="thursdayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('thursday')!.value }"
+              />
+            </div>
+          </div>
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="friday"> Sexta </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="fridayStart"
+                [ngClass]="{ disabled: !agendaForm.get('friday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="fridayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('friday')!.value }"
+              />
+            </div>
+          </div>
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="saturday">
+                Sábado
+              </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="saturdayStart"
+                [ngClass]="{ disabled: !agendaForm.get('saturday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="saturdayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('saturday')!.value }"
+              />
+            </div>
+          </div>
+          <div class="create-container-agenda-content-item">
+            <div class="create-container-agenda-content-item-day">
+              <mat-slide-toggle color="primary" formControlName="sunday">
+                Domingo
+              </mat-slide-toggle>
+            </div>
+            <div class="create-container-agenda-content-item-hours">
+              <input
+                type="time"
+                formControlName="sundayStart"
+                [ngClass]="{ disabled: !agendaForm.get('sunday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="sundayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('sunday')!.value }"
+              />
+            </div>
           </div>
         </div>
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Terça </mat-slide-toggle>
-          </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
-          </div>
-        </div>
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Quarta </mat-slide-toggle>
-          </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
-          </div>
-        </div>
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Quinta </mat-slide-toggle>
-          </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
-          </div>
-        </div>
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Sexta </mat-slide-toggle>
-          </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
-          </div>
-        </div>
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Sábado </mat-slide-toggle>
-          </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
-          </div>
-        </div>
-        <div class="create-container-agenda-content-item">
-          <div class="create-container-agenda-content-item-day">
-            <mat-slide-toggle color="primary"> Domingo </mat-slide-toggle>
-          </div>
-          <div class="create-container-agenda-content-item-hours">
-            <input type="time" />
-            <input type="time" />
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
   </form>
 

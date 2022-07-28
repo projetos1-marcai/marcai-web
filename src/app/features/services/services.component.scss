@@ -32,6 +32,15 @@
           }
         }
 
+        .no-img {
+          border-radius: 50%;
+          overflow: hidden;
+          height: 40px;
+          width: 40px;
+          margin-right: 10px;
+          background-color: var(--border-color);
+        }
+
         &-info {
           display: flex;
           flex-direction: column;

@@ -22,60 +22,65 @@
     </div>
   </div>
   <div class="service-schedule">
-    <h2 class="title-container">{{"Agenda"}}</h2>
+    <h2 class="title-container">Horários disponíveis</h2>
 
-    <div class="service-schedule-days">
-
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Domingo"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[0]">
-          {{getSchedulingDuration(item)}}
+    <div class="service-schedule-week">
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.segunda.length === 0 }">
+        <h3>Segunda</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.segunda">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-      <div class="service-schedule-spacing"></div>
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Segunda"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[1]">
-          {{getSchedulingDuration(item)}}
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.terca.length === 0 }">
+        <h3>Terça</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.terca">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-      <div class="service-schedule-spacing"></div>
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Terça"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[2]">
-          {{getSchedulingDuration(item)}}
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.quarta.length === 0 }">
+        <h3>Quarta</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.quarta">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-      <div class="service-schedule-spacing"></div>
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Quarta"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[3]">
-          {{getSchedulingDuration(item)}}
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.quinta.length === 0 }">
+        <h3>Quinta</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.quinta">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-      <div class="service-schedule-spacing"></div>
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Quinta"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[4]">
-          {{getSchedulingDuration(item)}}
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.sexta.length === 0 }">
+        <h3>Sexta</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.sexta">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-      <div class="service-schedule-spacing"></div>
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Sexta"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[5]">
-          {{getSchedulingDuration(item)}}
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.sabado.length === 0 }">
+        <h3>Sábado</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.sabado">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-      <div class="service-schedule-spacing"></div>
-      <div class="service-schedule-day">
-        <div class="day-title">{{"Sábado"}}</div>
-        <div class="scheduling-item" *ngFor="let item of agenda[6]">
-          {{getSchedulingDuration(item)}}
+      <div class="service-schedule-day" [ngClass]="{ disabled: agenda.domingo.length === 0 }">
+        <h3>Domingo</h3>
+        <div class="service-schedule-day-hour" *ngFor="let item of agenda.domingo">
+          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p style="margin: 0 8px">-</p>
+          <p>{{ item.fim | date: 'hh:mm' }}</p>
         </div>
       </div>
-
-
     </div>
 
     <!-- <div class="title-container">
