@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
       (data: any) => {
         this.isLoading = false;
         this.search ? (this.query = this.search) : '';
-        this.services = data.services;
+        this.services = data.servicos;
       },
       (err: Error) => {
         this.isLoading = false;
