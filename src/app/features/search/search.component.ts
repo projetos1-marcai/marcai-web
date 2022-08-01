@@ -1,5 +1,5 @@
 import { ServiceService } from './../../core/services/service/service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 type SearchType = 'service' | 'provider';
@@ -16,7 +16,11 @@ export class SearchComponent implements OnInit {
 
   services: any = [];
   isLoading: boolean = false;
-  constructor(private route: ActivatedRoute, private serviceService: ServiceService) {
+  constructor(
+    private route: ActivatedRoute,
+    private serviceService: ServiceService,
+    private router: Router
+  ) {
     this.route.queryParams.subscribe((params: any) => {
       if (params.q) {
         this.query = params.q;
@@ -45,5 +49,6 @@ export class SearchComponent implements OnInit {
 
   goToService(item: any): void {
     console.log(item);
+    this.router.navigate([`services/${item._id}`]);
   }
 }
