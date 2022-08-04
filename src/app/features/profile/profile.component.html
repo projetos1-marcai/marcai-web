@@ -1,0 +1,53 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="user-container layout-wrapper">
+  <!-- <div class="back-button">
+    <button mat-flat-button class="custom-rounded-outline-button" (click)="backToList()">
+      Voltar
+    </button>
+  </div> -->
+  <!-- <div class="nav-wrapper">
+    <p class="provider-name" (click)="goToProvider()">{{ service.fornecedor }}</p>
+    <mat-icon>chevron_right</mat-icon>
+    <p class="service-name"> service.titulo </p>
+  </div> -->
+
+  <div class="user-detail">
+    <div class="title-container">
+      <h1> {{user.nome}} </h1>
+    </div>
+    <div class="user-contact-container">
+
+      <p> {{user.email}} </p>
+      <p> {{user.telefone}} </p>
+    </div>
+    <!-- <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span> -->
+    <div class="description">
+      {{user.bio}}
+    </div>
+  </div>
+
+  <div class="services">
+    <h2 class="title-container">Serviços</h2>
+    <div class="services-table" [ngClass]="{ disabled: services.length === 0 }">
+      <!-- <h3>Serviços</h3> -->
+      <div class="services-table-line" *ngFor="let item of services">
+        <p>{{item.servico.titulo}}</p>
+      </div>
+    </div>
+
+    <!-- <div class="title-container">
+      <h1>{{ service.titulo }}</h1>
+      <mat-icon>share</mat-icon>
+    </div>
+    <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span>
+    <div class="description">
+      {{ service.descricao }}
+    </div> -->
+  </div>
+
+  <!-- <div class="actions-container">
+    <button mat-flat-button class="custom-flat-button" (click)="goToAgenda()">
+      Visualizar horarios disponíveis
+    </button>
+  </div> -->
+</div>

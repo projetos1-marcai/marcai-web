@@ -2,10 +2,12 @@ import { SearchComponent } from './features/search/search.component';
 import { LandingComponent } from './core/layout/landing/landing.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from './features/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'search', component: SearchComponent },
+  { path: 'profile', component: ProfileComponent },
   {
     path: 'providers',
     loadChildren: () =>
@@ -24,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

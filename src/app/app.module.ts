@@ -25,6 +25,7 @@ import { CreateComponent } from './features/services/service/create/create.compo
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { EditComponent } from './features/services/service/edit/edit.component';
+import { ProfileComponent } from './features/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EditComponent } from './features/services/service/edit/edit.component';
     SearchComponent,
     AgendaComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,4 +63,4 @@ import { EditComponent } from './features/services/service/edit/edit.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
