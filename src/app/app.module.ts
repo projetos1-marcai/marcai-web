@@ -25,7 +25,9 @@ import { CreateComponent } from './features/services/service/create/create.compo
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { EditComponent } from './features/services/service/edit/edit.component';
-
+import { LoginComponent } from './features/auth/login/login.component';
+import { RegisterComponent } from './features/auth/register/register.component';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { EditComponent } from './features/services/service/edit/edit.component';
     SearchComponent,
     AgendaComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,8 @@ import { EditComponent } from './features/services/service/edit/edit.component';
     MatSlideToggleModule,
     NgxMaskModule,
     CurrencyMaskModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,48 +1,12 @@
 <div class="nav-container">
-  <!-- QUANDO O USUÁRIO ESTÁ NA HOME -->
-  <div class="nav-container-wrapper layout-wrapper" *ngIf="route === '/'">
+  <div class="nav-container-wrapper layout-wrapper">
     <div class="nav-logo">
-      <img src="/assets/setup/marcai-logo.svg" alt="Marcaí" />
-      <div class="nav-location">
+      <img src="/assets/setup/marcai-logo.svg" alt="Marcaí" (click)="goToHome()" />
+      <!-- <div class="nav-location">
         <mat-icon aria-hidden="false" aria-label="Localização">my_location</mat-icon>
         <p>Você está em</p>
         <strong (click)="handleLocation()">{{ location }}</strong>
-      </div>
-    </div>
-    <div class="nav-container-wrapper-buttons">
-      <button mat-button class="custom-basic-button" (click)="handleRegistration()">
-        Criar conta
-      </button>
-      <button
-        mat-flat-button
-        class="custom-flat-button"
-        (click)="handleLogin()"
-        style="margin-left: 4px"
-      >
-        Login
-      </button>
-    </div>
-  </div>
-
-  <!-- QUANDO O USUÁRIO NÃO ESTÁ NA HOME -->
-  <div class="nav-container-wrapper layout-wrapper content-routing" *ngIf="route !== '/'">
-    <div class="nav-logo">
-      <img src="/assets/setup/marcai-logo.svg" (click)="goToHome()" alt="Marcaí" />
-      <form [formGroup]="navForm" class="search-container-field">
-        <!-- <mat-form-field appearance="outline" color="primary">
-          <mat-label>Encontrar serviço ou fornecedor</mat-label>
-          <input
-            type="text"
-            formControlName="search"
-            matInput
-            placeholder="Encontrar serviço ou fornecedor"
-          />
-        </mat-form-field> -->
-      </form>
-    </div>
-    <div class="nav-location">
-      <mat-icon aria-hidden="false" aria-label="Localização">my_location</mat-icon>
-      <strong (click)="handleLocation()">{{ location }}</strong>
+      </div> -->
     </div>
     <div class="nav-container-wrapper-buttons">
       <button mat-button class="custom-basic-button" (click)="handleRegistration()">

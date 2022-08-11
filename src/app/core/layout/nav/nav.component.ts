@@ -1,8 +1,10 @@
+import { RegisterComponent } from './../../../features/auth/register/register.component';
+import { LoginComponent } from './../../../features/auth/login/login.component';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-nav',
@@ -35,7 +37,36 @@ export class NavComponent implements OnInit {
     // this.dialog.open()
   }
 
-  handleLogin(): void {}
+  handleLogin(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '380px';
+    dialogConfig.height = '400px';
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = {};
 
-  handleRegistration(): void {}
+    const dialogRef = this.dialog.open(LoginComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data === 'NO_ACCOUNT') {
+        this.handleRegistration();
+      } else if (data === 'SUCCESS') {
+      }
+    });
+  }
+
+  handleRegistration(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '380px';
+    dialogConfig.height = '400px';
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = {};
+
+    const dialogRef = this.dialog.open(RegisterComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((data) => {
+      console.log(data);
+    });
+  }
 }

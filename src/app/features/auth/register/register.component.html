@@ -1,0 +1,38 @@
+<form [formGroup]="registerForm">
+  <div class="register-container">
+    <h1>Cadastrar</h1>
+    <div class="register-container-fields">
+      <mat-radio-group aria-label="Selecione uma opção" color="primary">
+        <mat-radio-button value="1">Usuário</mat-radio-button>
+        <mat-radio-button value="2">Fornecedor</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>E-mail</mat-label>
+        <input type="email" formControlName="email" matInput placeholder="E-mail" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Senha</mat-label>
+        <input
+          type="password"
+          (keypress.enter)="submit()"
+          formControlName="password"
+          matInput
+          placeholder="Senha"
+        />
+      </mat-form-field>
+      <button
+        mat-flat-button
+        [disabled]="disableButton()"
+        class="custom-flat-button"
+        (click)="submit()"
+      >
+        Cadastrar
+      </button>
+    </div>
+
+    <div class="register-container-info">
+      <p>Já possui conta?</p>
+      <a (click)="goToLogin()">Entrar</a>
+    </div>
+  </div>
+</form>
