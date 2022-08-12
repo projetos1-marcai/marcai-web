@@ -44,8 +44,8 @@ export class RegisterComponent implements OnInit {
       (data) => {
         console.log(data);
         this.authService.login({ email: params.email, senha: params.senha }).subscribe(
-          () => {
-            this.tokenService.setToken(data.token);
+          (res: any) => {
+            this.tokenService.setToken(res.token);
             location.reload();
           },
           (err) => {
