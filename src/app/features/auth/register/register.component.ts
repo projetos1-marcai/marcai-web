@@ -1,3 +1,4 @@
+import { AuthService } from './../../../core/services/auth/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -9,10 +10,16 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+    cellphoneNumber: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+    type: new FormControl('1', [Validators.required])
   });
-  constructor(public dialogRef: MatDialogRef<RegisterComponent>) {}
+  constructor(
+    private authService: AuthService,
+    public dialogRef: MatDialogRef<RegisterComponent>
+  ) {}
 
   ngOnInit(): void {}
 
@@ -20,7 +27,19 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.invalid;
   }
 
-  submit(): void {}
+  submit(): void {
+    console.log(this.registerForm.value);
+    const cell = this.registerForm.get('cellphoneNumber')?.value;
+    const params = {
+      nome: this.registerForm.get('name')?.value,
+      email: this.registerForm.get('email')?.value,
+      senha: this.registerForm.get('password')?.value,
+      telefone: `(${cell.substring(0, 2)}) ${cell.substring(2)}`
+    };
+    this.authService.register(params).subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   goToLogin(): void {
     this.dialogRef.close('HAS_ACCOUNT');

@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [LayoutComponent, NavComponent, LandingComponent],
   imports: [
@@ -24,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule
   ],
   exports: [LayoutComponent]
 })

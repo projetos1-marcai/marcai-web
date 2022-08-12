@@ -1,41 +1,105 @@
+import { Event, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { TokenService } from './../../services/token/token.service';
 import { RegisterComponent } from './../../../features/auth/register/register.component';
 import { LoginComponent } from './../../../features/auth/login/login.component';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { filter } from 'rxjs';
 
+interface NavItem {
+  displayName: string;
+  disabled?: boolean;
+  route?: string;
+  children?: NavItem[];
+  role: string;
+}
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavComponent implements OnInit {
+  isLogged!: boolean;
   location: string = 'Campina Grande, PB';
-  route: any;
+  logoUrl: string = '/assets/img/avatar.png';
+
   navForm = new FormGroup({
     search: new FormControl('')
   });
-  constructor(private router: Router, private dialog: MatDialog) {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-        this.route = event.url;
+
+  selected = new FormControl(0);
+  navItems: NavItem[] = [
+    {
+      displayName: 'Home',
+      route: 'home',
+      role: 'public'
+    },
+    {
+      displayName: 'Serviços',
+      route: 'services',
+      role: 'public'
+    },
+    {
+      displayName: 'Fornecedores',
+      route: 'providers',
+      role: 'providers'
+    }
+  ];
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+    private tokenService: TokenService
+  ) {
+    router.events
+      .pipe(filter((e: Event): e is RouterEvent => e instanceof RouterEvent))
+      .subscribe((e: RouterEvent) => {
+        if (e instanceof NavigationEnd) {
+          const currentRoute = this.router.url.split('/')[1];
+          switch (currentRoute) {
+            case '':
+              this.selected.setValue(0);
+              break;
+            case 'home':
+              this.selected.setValue(0);
+              break;
+            case 'services':
+              this.selected.setValue(1);
+              break;
+            case 'providers':
+              this.selected.setValue(2);
+              break;
+            default:
+              break;
+          }
+        }
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isLogged = this.tokenService.isLoggedIn();
+  }
 
   goToHome(): void {
     this.router.navigate(['/']);
   }
 
-  handleSearch() {}
-
-  handleLocation(): void {
-    // this.dialog.open()
+  changeTab(event: any): void {
+    switch (event.index) {
+      case 0:
+        this.router.navigate(['/']);
+        break;
+      case 1:
+        this.router.navigate(['/services']);
+        break;
+      case 2:
+        this.router.navigate(['/providers']);
+        break;
+    }
   }
+
+  logOut(): void {}
 
   handleLogin(): void {
     const dialogConfig = new MatDialogConfig();
@@ -58,7 +122,7 @@ export class NavComponent implements OnInit {
   handleRegistration(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '380px';
-    dialogConfig.height = '400px';
+    dialogConfig.height = '550px';
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
     dialogConfig.data = {};

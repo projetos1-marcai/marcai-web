@@ -9,6 +9,11 @@
     font-weight: 600;
     color: var(--primary-black);
   }
+
+  .error-description {
+    color: #f51f1f;
+    text-align: center;
+  }
   &-fields {
     width: 100%;
     display: flex;

@@ -8,7 +8,7 @@
         <strong (click)="handleLocation()">{{ location }}</strong>
       </div> -->
     </div>
-    <div class="nav-container-wrapper-buttons">
+    <div class="nav-container-wrapper-buttons" *ngIf="!isLogged">
       <button mat-button class="custom-basic-button" (click)="handleRegistration()">
         Criar conta
       </button>
@@ -20,6 +20,34 @@
       >
         Login
       </button>
+    </div>
+
+    <div class="nav-container-wrapper-nav">
+      <mat-tab-group
+        class="tabs-wrapper"
+        [selectedIndex]="selected.value"
+        (selectedIndexChange)="selected.setValue($event)"
+        (selectedTabChange)="changeTab($event)"
+      >
+        <mat-tab
+          class="tab-item"
+          *ngFor="let tab of navItems; let index = index"
+          [label]="tab.displayName"
+        >
+        </mat-tab>
+      </mat-tab-group>
+      <div class="profile-container">
+        <div class="user-wrapper">
+          <div class="user-image">
+            <img [src]="logoUrl" alt="logo" data-test="logo-img" />
+          </div>
+        </div>
+        <div>
+          <a class="logout" (click)="logOut()">
+            <span class="material-icons"> logout </span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

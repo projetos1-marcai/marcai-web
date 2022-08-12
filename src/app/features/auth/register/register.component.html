@@ -2,13 +2,27 @@
   <div class="register-container">
     <h1>Cadastrar</h1>
     <div class="register-container-fields">
-      <mat-radio-group aria-label="Selecione uma opção" color="primary">
+      <mat-radio-group formControlName="type" aria-label="Selecione uma opção" color="primary">
         <mat-radio-button value="1">Usuário</mat-radio-button>
         <mat-radio-button value="2">Fornecedor</mat-radio-button>
       </mat-radio-group>
       <mat-form-field appearance="outline" color="primary">
+        <mat-label>Nome</mat-label>
+        <input type="text" formControlName="name" matInput placeholder="Nome" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary">
         <mat-label>E-mail</mat-label>
         <input type="email" formControlName="email" matInput placeholder="E-mail" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Telefone celular</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="cellphoneNumber"
+          mask="(00) 00000-0000"
+          placeholder="Telefone celular"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline" color="primary">
         <mat-label>Senha</mat-label>

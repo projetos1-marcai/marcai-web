@@ -1,6 +1,9 @@
 <form [formGroup]="loginForm">
   <div class="login-container">
     <h1>Entrar</h1>
+    <span class="error-description" *ngIf="error">
+      {{ error }}
+    </span>
     <div class="login-container-fields">
       <mat-form-field appearance="outline" color="primary">
         <mat-label>E-mail</mat-label>

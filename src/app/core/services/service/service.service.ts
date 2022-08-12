@@ -15,12 +15,16 @@ export class ServiceService {
     return this.http.get(`${this.environmentService.apiUrl}/service/id/${id}`);
   }
 
+  deleteService(id: any): Observable<any> {
+    return this.http.delete(`${this.environmentService.apiUrl}/service/id/${id}`);
+  }
+
   createService(params: any): Observable<any> {
     return this.http.post(`${this.environmentService.apiUrl}/service`, params);
   }
 
   updateService(id: any, params: any): Observable<any> {
-    return this.http.post(`${this.environmentService.apiUrl}/service/${id}/atualizar`, params);
+    return this.http.put(`${this.environmentService.apiUrl}/service/${id}`, params);
   }
 
   searchService(query: any): Observable<any> {
