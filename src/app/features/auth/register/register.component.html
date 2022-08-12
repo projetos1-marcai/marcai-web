@@ -1,6 +1,9 @@
 <form [formGroup]="registerForm">
   <div class="register-container">
     <h1>Cadastrar</h1>
+    <span class="error-description" *ngIf="error">
+      {{ error }}
+    </span>
     <div class="register-container-fields">
       <mat-radio-group formControlName="type" aria-label="Selecione uma opção" color="primary">
         <mat-radio-button value="1">Usuário</mat-radio-button>

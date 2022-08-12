@@ -1,3 +1,5 @@
+import { TokenService } from './../../../core/services/token/token.service';
+import { Router } from '@angular/router';
 import { AuthService } from './../../../core/services/auth/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -9,6 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  error!: string;
   registerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -18,7 +21,8 @@ export class RegisterComponent implements OnInit {
   });
   constructor(
     private authService: AuthService,
-    public dialogRef: MatDialogRef<RegisterComponent>
+    public dialogRef: MatDialogRef<RegisterComponent>,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {}
@@ -36,9 +40,23 @@ export class RegisterComponent implements OnInit {
       senha: this.registerForm.get('password')?.value,
       telefone: `(${cell.substring(0, 2)}) ${cell.substring(2)}`
     };
-    this.authService.register(params).subscribe((data) => {
-      console.log(data);
-    });
+    this.authService.register(params).subscribe(
+      (data) => {
+        console.log(data);
+        this.authService.login({ email: params.email, senha: params.senha }).subscribe(
+          () => {
+            this.tokenService.setToken(data.token);
+            location.reload();
+          },
+          (err) => {
+            location.reload();
+          }
+        );
+      },
+      () => {
+        this.error = 'Ocorreu um erro, verifique os dados.';
+      }
+    );
   }
 
   goToLogin(): void {

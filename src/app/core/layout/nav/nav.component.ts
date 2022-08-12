@@ -61,7 +61,7 @@ export class NavComponent implements OnInit {
             case '':
               this.selected.setValue(0);
               break;
-            case 'home':
+            case '/':
               this.selected.setValue(0);
               break;
             case 'services':
@@ -69,6 +69,9 @@ export class NavComponent implements OnInit {
               break;
             case 'providers':
               this.selected.setValue(2);
+              break;
+            case '/profile':
+              this.selected.setValue(3);
               break;
             default:
               break;
@@ -82,7 +85,9 @@ export class NavComponent implements OnInit {
   }
 
   goToHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
   }
 
   changeTab(event: any): void {
@@ -96,10 +101,16 @@ export class NavComponent implements OnInit {
       case 2:
         this.router.navigate(['/providers']);
         break;
+      case 3:
+        this.router.navigate(['/profile']);
+        break;
     }
   }
 
-  logOut(): void {}
+  logOut(): void {
+    this.tokenService.removeJwtToken();
+    this.selected.value === 0 ? window.location.reload() : this.goToHome();
+  }
 
   handleLogin(): void {
     const dialogConfig = new MatDialogConfig();
