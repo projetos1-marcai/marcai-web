@@ -21,15 +21,18 @@
       <p> {{user.telefone}} </p>
     </div>
     <!-- <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span> -->
+
     <div class="description">
-      {{user.bio}}
+
+      <p> Ainda sem descrição </p>
+
     </div>
   </div>
 
-  <div class="services">
+  <div class="services" *ngIf="isProvider">
     <h2 class="title-container">Serviços</h2>
     <div class="services-table" [ngClass]="{ disabled: services.length === 0 }">
-      <!-- <h3>Serviços</h3> -->
+      <h3 *ngIf="services.length === 0">Nenhum serviço cadastrado</h3>
       <div class="services-table-line" *ngFor="let item of services">
         <p>{{item.servico.titulo}}</p>
       </div>

@@ -18,36 +18,53 @@ export class ProfileComponent implements OnInit {
   services: any[] = [];
   isLogged = false;
   isLoading: boolean = false;
+  isProvider: boolean = false;
   constructor(
     private router: Router,
     private tokenService: TokenService,
     private providerService: ProviderService,
     private serviceService: ServiceService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLoggedIn();
     this.user = this.tokenService.getUserInfo();
     this.userId = this.user.id_usuario;
+    this.isProvider = this.user.fornecedor;
+    console.log(this.user)
     this.getUser();
   }
 
   getUser(): void {
     this.isLoading = true;
-    this.providerService.getProvider(this.userId).subscribe((data) => {
-      this.user = data.usuario;
-      var servicesIds = data.usuario.servicos;
-      this.getServices(servicesIds);
-    });
+
+    if (this.isProvider) {
+      this.providerService.getProvider(this.userId).subscribe((data) => {
+        this.user = data.usuario;
+        var servicesIds = data.usuario.servicos;
+        this.getServices(servicesIds);
+      });
+    } else {
+      this.isLoading = false;
+    }
+
+
   }
 
   getServices(servicesIds: string[]): void {
-    servicesIds.forEach((e: any, i: number) => {
-      this.serviceService.getService(e).subscribe((data) => {
-        this.services.push(data);
-        if (i === servicesIds.length - 1) this.isLoading = false;
+    console.log(this.isProvider)
+
+    if (servicesIds.length === 0) {
+      this.isLoading = false;
+    } else {
+
+      servicesIds.forEach((e: any, i: number) => {
+        this.serviceService.getService(e).subscribe((data) => {
+          this.services.push(data);
+          if (i === servicesIds.length - 1) this.isLoading = false;
+        });
       });
-    });
+    }
   }
 
   goToAgenda(): void {
