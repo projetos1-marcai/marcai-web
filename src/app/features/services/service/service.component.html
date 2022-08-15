@@ -4,6 +4,16 @@
     <button mat-flat-button class="custom-rounded-outline-button" (click)="backToList()">
       Voltar
     </button>
+
+    <button
+      *ngIf="isLogged && user.fornecedor === true"
+      mat-flat-button
+      class="custom-flat-button"
+      (click)="editService()"
+      style="margin-left: 4px"
+    >
+      Editar serviço
+    </button>
   </div>
   <div class="nav-wrapper">
     <p class="provider-name" (click)="goToProvider()">{{ service.fornecedor }}</p>
@@ -28,57 +38,57 @@
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.segunda.length === 0 }">
         <h3>Segunda</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.segunda">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.terca.length === 0 }">
         <h3>Terça</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.terca">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.quarta.length === 0 }">
         <h3>Quarta</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.quarta">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.quinta.length === 0 }">
         <h3>Quinta</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.quinta">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.sexta.length === 0 }">
         <h3>Sexta</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.sexta">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.sabado.length === 0 }">
         <h3>Sábado</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.sabado">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
       <div class="service-schedule-day" [ngClass]="{ disabled: agenda.domingo.length === 0 }">
         <h3>Domingo</h3>
         <div class="service-schedule-day-hour" *ngFor="let item of agenda.domingo">
-          <p>{{ item.inicio | date: 'hh:mm' }}</p>
+          <p>{{ item.inicio | date: 'HH:mm':'+0' }}</p>
           <p style="margin: 0 8px">-</p>
-          <p>{{ item.fim | date: 'hh:mm' }}</p>
+          <p>{{ item.fim | date: 'HH:mm':'+0' }}</p>
         </div>
       </div>
     </div>

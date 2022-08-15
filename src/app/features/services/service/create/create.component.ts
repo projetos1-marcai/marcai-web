@@ -1,3 +1,4 @@
+import { TokenService } from './../../../../core/services/token/token.service';
 import { AgendaService } from './../../../../core/services/agenda/agenda.service';
 import { Router } from '@angular/router';
 import { ServiceService } from './../../../../core/services/service/service.service';
@@ -13,7 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CreateComponent implements OnInit {
   isLoading: boolean = false;
-
+  isLogged = false;
+  user: any;
   categories = CATEGORIES;
   paymentMethods = PAYMENT_METHODS;
 
@@ -57,13 +59,16 @@ export class CreateComponent implements OnInit {
     private serviceService: ServiceService,
     private agendaService: AgendaService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
+    this.isLogged = this.tokenService.isLoggedIn();
+    this.user = this.tokenService.getUserInfo();
     this.createForm.patchValue({
       disponivel: true,
-      fornecedor: '123'
+      fornecedor: this.user.id || '123'
     });
   }
 

@@ -24,6 +24,7 @@ export class NavComponent implements OnInit {
   isLogged!: boolean;
   location: string = 'Campina Grande, PB';
   logoUrl: string = '/assets/img/avatar.png';
+  pageEntry = 0;
 
   navForm = new FormGroup({
     search: new FormControl('')
@@ -37,15 +38,20 @@ export class NavComponent implements OnInit {
       role: 'public'
     },
     {
-      displayName: 'Serviços',
-      route: 'services',
+      displayName: 'Buscar',
+      route: 'search',
       role: 'public'
     },
     {
-      displayName: 'Fornecedores',
-      route: 'providers',
-      role: 'providers'
+      displayName: 'Serviços',
+      route: 'services',
+      role: 'public'
     }
+    // {
+    //   displayName: 'Fornecedores',
+    //   route: 'providers',
+    //   role: 'public'
+    // }
   ];
   constructor(
     private router: Router,
@@ -57,24 +63,32 @@ export class NavComponent implements OnInit {
       .subscribe((e: RouterEvent) => {
         if (e instanceof NavigationEnd) {
           const currentRoute = this.router.url.split('/')[1];
-          switch (currentRoute) {
-            case '':
-              this.selected.setValue(0);
-              break;
-            case '/':
-              this.selected.setValue(0);
-              break;
-            case 'services':
-              this.selected.setValue(1);
-              break;
-            case 'providers':
-              this.selected.setValue(2);
-              break;
-            case '/profile':
-              this.selected.setValue(3);
-              break;
-            default:
-              break;
+
+          if (currentRoute.includes('search')) {
+            this.selected.setValue(1);
+          } else {
+            switch (currentRoute) {
+              case '':
+                this.selected.setValue(0);
+                break;
+              case '/':
+                this.selected.setValue(0);
+                break;
+              case 'search':
+                this.selected.setValue(1);
+                break;
+              case 'services':
+                this.selected.setValue(2);
+                break;
+              case 'profile':
+                this.selected.setValue(3);
+                break;
+              case 'providers':
+                this.selected.setValue(4);
+                break;
+              default:
+                break;
+            }
           }
         }
       });
@@ -91,19 +105,24 @@ export class NavComponent implements OnInit {
   }
 
   changeTab(event: any): void {
-    switch (event.index) {
-      case 0:
-        this.router.navigate(['/']);
-        break;
-      case 1:
-        this.router.navigate(['/services']);
-        break;
-      case 2:
-        this.router.navigate(['/providers']);
-        break;
-      case 3:
-        this.router.navigate(['/profile']);
-        break;
+    if (this.pageEntry++ !== 0) {
+      switch (event.index) {
+        case 0:
+          this.router.navigate(['/']);
+          break;
+        case 1:
+          this.router.navigate(['/search']);
+          break;
+        case 2:
+          this.router.navigate(['/services']);
+          break;
+        case 3:
+          this.router.navigate(['/profile']);
+          break;
+        case 4:
+          this.router.navigate(['/providers']);
+          break;
+      }
     }
   }
 

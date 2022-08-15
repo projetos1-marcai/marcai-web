@@ -1,3 +1,4 @@
+import { TokenService } from './../../core/services/token/token.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServiceService } from './../../core/services/service/service.service';
 import { Router } from '@angular/router';
@@ -10,16 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicesComponent implements OnInit {
   services: any[] = [];
+  user: any = {};
+  isLogged: boolean = false;
   isLoading: boolean = false;
 
   constructor(
     private router: Router,
     private serviceService: ServiceService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
     this.getServices();
+    this.isLogged = this.tokenService.isLoggedIn();
+    this.user = this.tokenService.getUserInfo();
   }
 
   getServices(): void {
@@ -40,6 +46,10 @@ export class ServicesComponent implements OnInit {
 
   goToProduct(item: any): void {
     this.router.navigate([`services/${item._id}`]);
+  }
+
+  registerService(): void {
+    this.router.navigate([`services/create`]);
   }
 
   openSnackBar(value: string) {

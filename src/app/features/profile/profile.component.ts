@@ -1,3 +1,4 @@
+import { TokenService } from './../../core/services/token/token.service';
 import { ServiceService } from './../../core/services/service/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -15,18 +16,19 @@ export class ProfileComponent implements OnInit {
   user: any;
   userId?: string;
   services: any[] = [];
+  isLogged = false;
   isLoading: boolean = false;
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private tokenService: TokenService,
     private providerService: ProviderService,
-    private serviceService: ServiceService,
-  ) { }
+    private serviceService: ServiceService
+  ) {}
 
   ngOnInit(): void {
-    // TODO: Modificar ID do usuário atual
-    this.userId = "62e99d32da7eac57b5362318";
-    // this.userId = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    this.isLogged = this.tokenService.isLoggedIn();
+    this.user = this.tokenService.getUserInfo();
+    this.userId = '62f7f306f1e82c584aba8082';
     this.getUser();
   }
 
@@ -40,14 +42,12 @@ export class ProfileComponent implements OnInit {
   }
 
   getServices(servicesIds: string[]): void {
-
     servicesIds.forEach((e: any, i: number) => {
       this.serviceService.getService(e).subscribe((data) => {
         this.services.push(data);
         if (i === servicesIds.length - 1) this.isLoading = false;
       });
     });
-
   }
 
   goToAgenda(): void {

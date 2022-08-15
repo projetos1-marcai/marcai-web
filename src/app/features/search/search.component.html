@@ -7,7 +7,7 @@
         [(ngModel)]="search"
         (keydown.enter)="getSearch()"
         matInput
-        placeholder="Busque por serviço ou fornecedor"
+        placeholder="Busque por um serviço"
       />
     </mat-form-field>
     <button
@@ -19,7 +19,7 @@
       Buscar
     </button>
   </div>
-  <h1>
+  <h1 *ngIf="query">
     Buscando por <span style="color: var(--primary-orange)">{{ query }}</span>
   </h1>
   <!-- <div class="filters-container"></div> -->

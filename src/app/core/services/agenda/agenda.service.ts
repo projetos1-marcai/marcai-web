@@ -14,4 +14,8 @@ export class AgendaService {
   createAgenda(params: any): Observable<any> {
     return this.http.post(`${this.environmentService.apiUrl}/horario`, params);
   }
+
+  cleanAgenda(id: any): Observable<any> {
+    return this.http.post(`${this.environmentService.apiUrl}/horario/${id}/remover`, {});
+  }
 }

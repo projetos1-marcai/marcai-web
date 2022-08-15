@@ -1,3 +1,4 @@
+import { TokenService } from './../../../core/services/token/token.service';
 import { ServiceService } from './../../../core/services/service/service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,14 +13,19 @@ export class ServiceComponent implements OnInit {
   serviceId?: string;
   agenda: any;
   isLoading: boolean = false;
+  isLogged = false;
+  user: any;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private serviceService: ServiceService
+    private serviceService: ServiceService,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
     this.serviceId = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    this.isLogged = this.tokenService.isLoggedIn();
+    this.user = this.tokenService.getUserInfo();
     this.getService();
   }
 
@@ -32,9 +38,8 @@ export class ServiceComponent implements OnInit {
     });
   }
 
-  goToAgenda(): void {
-    console.log(this.serviceId);
-    // this.router.navigate([`services/${this.serviceId}/agenda`]);
+  editService(): void {
+    this.router.navigate([`services/${this.serviceId}/edit`]);
   }
 
   goToProvider(): void {

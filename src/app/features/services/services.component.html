@@ -1,6 +1,17 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="services-container layout-wrapper">
-  <h1>Serviços</h1>
+  <div class="services-container-header">
+    <h1>Serviços</h1>
+    <button
+      *ngIf="isLogged && user.fornecedor === true"
+      mat-flat-button
+      class="custom-flat-button"
+      (click)="registerService()"
+      style="margin-left: 4px"
+    >
+      Cadastrar serviço
+    </button>
+  </div>
   <!-- <div class="filters-container"></div> -->
 
   <div class="services-container-listing">

@@ -1,6 +1,5 @@
 import { EditComponent } from './service/edit/edit.component';
 import { CreateComponent } from './service/create/create.component';
-import { AgendaComponent } from './service/agenda/agenda.component';
 import { ServiceComponent } from './service/service.component';
 import { ServicesComponent } from './services.component';
 
@@ -27,11 +26,6 @@ const routes: Routes = [
     path: ':id/edit',
     // canActivate: [AuthGuardService],
     component: EditComponent
-  },
-  {
-    path: ':id/agenda',
-    // canActivate: [AuthGuardService],
-    component: AgendaComponent
   }
 ];
 

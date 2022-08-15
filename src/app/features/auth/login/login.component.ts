@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     };
     this.authService.login(params).subscribe(
       (data) => {
+        this.tokenService.setUserInfo(data.usuario);
         this.tokenService.setToken(data.token);
         window.location.reload();
       },

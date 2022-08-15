@@ -2,9 +2,16 @@
   margin: 40px auto;
   color: var(--primary-black);
   padding-bottom: 80px !important;
-  h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
+
+  &-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
   }
 
   &-listing {

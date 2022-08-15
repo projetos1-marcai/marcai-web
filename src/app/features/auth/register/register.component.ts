@@ -38,7 +38,8 @@ export class RegisterComponent implements OnInit {
       nome: this.registerForm.get('name')?.value,
       email: this.registerForm.get('email')?.value,
       senha: this.registerForm.get('password')?.value,
-      telefone: `(${cell.substring(0, 2)}) ${cell.substring(2)}`
+      telefone: `(${cell.substring(0, 2)}) ${cell.substring(2)}`,
+      fornecedor: this.registerForm.get('type')?.value === '2' ? true : false
     };
     this.authService.register(params).subscribe(
       (data) => {
@@ -46,7 +47,9 @@ export class RegisterComponent implements OnInit {
         this.authService.login({ email: params.email, senha: params.senha }).subscribe(
           (res: any) => {
             this.tokenService.setToken(res.token);
-            location.reload();
+            setTimeout(() => {
+              location.reload();
+            }, 200);
           },
           (err) => {
             location.reload();

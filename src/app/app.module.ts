@@ -21,7 +21,6 @@ import { ProviderComponent } from './features/providers/provider/provider.compon
 import { ServiceComponent } from './features/services/service/service.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SearchComponent } from './features/search/search.component';
-import { AgendaComponent } from './features/services/service/agenda/agenda.component';
 import { CreateComponent } from './features/services/service/create/create.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -40,7 +39,6 @@ import { ProfileComponent } from './features/profile/profile.component';
     ProviderComponent,
     ServiceComponent,
     SearchComponent,
-    AgendaComponent,
     CreateComponent,
     EditComponent,
     LoginComponent,
