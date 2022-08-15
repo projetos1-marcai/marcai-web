@@ -116,6 +116,7 @@ export class CreateComponent implements OnInit {
 
       if (index === availableDays.length - 1) {
         this.router.navigate([`services/${service._id}`]);
+        window.location.reload();
       }
     });
   }

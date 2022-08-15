@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
               location.reload();
             }
           );
-        }, 400);
+        }, 1000);
       },
       () => {
         this.error = 'Ocorreu um erro, verifique os dados.';

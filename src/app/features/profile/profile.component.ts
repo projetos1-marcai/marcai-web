@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLoggedIn();
     this.user = this.tokenService.getUserInfo();
-    this.userId = '62f7f306f1e82c584aba8082';
+    this.userId = this.user.id_usuario;
     this.getUser();
   }
 

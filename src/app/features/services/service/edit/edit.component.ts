@@ -149,7 +149,9 @@ export class EditComponent implements OnInit {
       (data) => {
         this.isLoading = false;
         this.deleteCurrentAgenda();
-        this.createAgenda(data.servico);
+        setTimeout(() => {
+          this.createAgenda(data.servico);
+        }, 1000);
       },
       (err) => {
         this.openSnackBar('Ocorreu um erro, verifique os dados ou tente mais tarde.');
@@ -161,37 +163,65 @@ export class EditComponent implements OnInit {
   deleteCurrentAgenda(): void {
     if (this.prevAgenda.segunda.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.segunda[0]._id, dia: 'segunda' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.segunda[0]._id,
+          id_servico: this.serviceId,
+          dia: 'segunda'
+        })
         .subscribe();
     }
     if (this.prevAgenda.terca.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.terca[0]._id, dia: 'terca' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.terca[0]._id,
+          id_servico: this.serviceId,
+          dia: 'terca'
+        })
         .subscribe();
     }
     if (this.prevAgenda.quarta.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.quarta[0]._id, dia: 'quarta' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.quarta[0]._id,
+          id_servico: this.serviceId,
+          dia: 'quarta'
+        })
         .subscribe();
     }
     if (this.prevAgenda.quinta.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.quinta[0]._id, dia: 'quinta' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.quinta[0]._id,
+          id_servico: this.serviceId,
+          dia: 'quinta'
+        })
         .subscribe();
     }
     if (this.prevAgenda.sexta.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.sexta[0]._id, dia: 'sexta' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.sexta[0]._id,
+          id_servico: this.serviceId,
+          dia: 'sexta'
+        })
         .subscribe();
     }
     if (this.prevAgenda.sabado.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.sabado[0]._id, dia: 'sabado' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.sabado[0]._id,
+          id_servico: this.serviceId,
+          dia: 'sabado'
+        })
         .subscribe();
     }
     if (this.prevAgenda.domingo.length > 0) {
       this.agendaService
-        .cleanAgenda({ id_servico: this.prevAgenda.domingo[0]._id, dia: 'domingo' })
+        .cleanAgenda({
+          id_agenda: this.prevAgenda.domingo[0]._id,
+          id_servico: this.serviceId,
+          dia: 'domingo'
+        })
         .subscribe();
     }
   }
@@ -220,7 +250,10 @@ export class EditComponent implements OnInit {
       this.agendaService.createAgenda(params).subscribe((data: any) => {});
 
       if (index === availableDays.length - 1) {
-        this.router.navigate([`services/${service._id}`]);
+        setTimeout(() => {
+          this.router.navigate([`services/${service._id}`]);
+          // window.location.reload();
+        }, 2000);
       }
     });
   }
