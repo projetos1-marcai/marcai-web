@@ -43,18 +43,17 @@ export class RegisterComponent implements OnInit {
     };
     this.authService.register(params).subscribe(
       (data) => {
-        console.log(data);
-        this.authService.login({ email: params.email, senha: params.senha }).subscribe(
-          (res: any) => {
-            this.tokenService.setToken(res.token);
-            setTimeout(() => {
+        setTimeout(() => {
+          this.authService.login({ email: params.email, senha: params.senha }).subscribe(
+            (res: any) => {
+              this.tokenService.setToken(res.token);
               location.reload();
-            }, 200);
-          },
-          (err) => {
-            location.reload();
-          }
-        );
+            },
+            (err) => {
+              location.reload();
+            }
+          );
+        }, 400);
       },
       () => {
         this.error = 'Ocorreu um erro, verifique os dados.';

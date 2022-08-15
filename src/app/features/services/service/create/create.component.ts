@@ -68,7 +68,7 @@ export class CreateComponent implements OnInit {
     this.user = this.tokenService.getUserInfo();
     this.createForm.patchValue({
       disponivel: true,
-      fornecedor: this.user.id || '123'
+      fornecedor: this.user.id_usuario || ''
     });
   }
 

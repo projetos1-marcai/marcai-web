@@ -160,25 +160,39 @@ export class EditComponent implements OnInit {
 
   deleteCurrentAgenda(): void {
     if (this.prevAgenda.segunda.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.segunda[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.segunda[0]._id, dia: 'segunda' })
+        .subscribe();
     }
     if (this.prevAgenda.terca.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.terca[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.terca[0]._id, dia: 'terca' })
+        .subscribe();
     }
     if (this.prevAgenda.quarta.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.quarta[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.quarta[0]._id, dia: 'quarta' })
+        .subscribe();
     }
     if (this.prevAgenda.quinta.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.quinta[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.quinta[0]._id, dia: 'quinta' })
+        .subscribe();
     }
     if (this.prevAgenda.sexta.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.sexta[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.sexta[0]._id, dia: 'sexta' })
+        .subscribe();
     }
     if (this.prevAgenda.sabado.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.sabado[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.sabado[0]._id, dia: 'sabado' })
+        .subscribe();
     }
     if (this.prevAgenda.domingo.length > 0) {
-      this.agendaService.cleanAgenda(this.prevAgenda.domingo[0]._id).subscribe();
+      this.agendaService
+        .cleanAgenda({ id_servico: this.prevAgenda.domingo[0]._id, dia: 'domingo' })
+        .subscribe();
     }
   }
 

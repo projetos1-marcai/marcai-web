@@ -15,7 +15,10 @@ export class AgendaService {
     return this.http.post(`${this.environmentService.apiUrl}/horario`, params);
   }
 
-  cleanAgenda(id: any): Observable<any> {
-    return this.http.post(`${this.environmentService.apiUrl}/horario/${id}/remover`, {});
+  cleanAgenda(params: any): Observable<any> {
+    return this.http.post(
+      `${this.environmentService.apiUrl}/horario/${params.id_servico}/remover`,
+      params
+    );
   }
 }
