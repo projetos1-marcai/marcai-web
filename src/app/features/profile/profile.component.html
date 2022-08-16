@@ -24,17 +24,26 @@
 
     <div class="description">
 
-      <p> Ainda sem descrição </p>
+      <p *ngIf="user.bio === undefined"> Ainda sem descrição </p>
+      <p *ngIf="user.bio !== undefined"> {{user.bio}} </p>
 
     </div>
   </div>
 
   <div class="services" *ngIf="isProvider">
-    <h2 class="title-container">Serviços</h2>
+    <h2 class="title-container">Meus serviços</h2>
     <div class="services-table" [ngClass]="{ disabled: services.length === 0 }">
       <h3 *ngIf="services.length === 0">Nenhum serviço cadastrado</h3>
       <div class="services-table-line" *ngFor="let item of services">
-        <p>{{item.servico.titulo}}</p>
+        <p class="services-table-line-title">{{item.servico.titulo}}</p>
+        <p class="services-table-line-reservations" *ngFor="let res of reservations.get(item.servico._id)">
+          cliente:
+          {{res.cliente}}
+          / horário:
+          {{res.horario}}
+          / status:
+          {{res.status}}
+        </p>
       </div>
     </div>
 
@@ -47,6 +56,8 @@
       {{ service.descricao }}
     </div> -->
   </div>
+
+
 
   <!-- <div class="actions-container">
     <button mat-flat-button class="custom-flat-button" (click)="goToAgenda()">
