@@ -6,7 +6,7 @@
     </button>
 
     <button
-      *ngIf="isLogged && user.fornecedor === true"
+      *ngIf="isLogged && user.fornecedor === true && user.nome === service.fornecedor"
       mat-flat-button
       class="custom-flat-button"
       (click)="editService()"
@@ -22,6 +22,12 @@
   </div>
 
   <div class="service-detail">
+    <img
+      *ngIf="service?.logo_url !== null"
+      [src]="service?.logo_url"
+      class="image-preview"
+      style="height: 150px; width: auto; max-width: 400px; margin-bottom: 20px"
+    />
     <div class="title-container">
       <h1>{{ service.titulo }}</h1>
       <mat-icon>share</mat-icon>

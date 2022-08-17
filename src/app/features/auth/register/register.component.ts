@@ -12,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class RegisterComponent implements OnInit {
   error!: string;
+  isLoading = false;
   registerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void {
+    this.isLoading = true;
     console.log(this.registerForm.value);
     const cell = this.registerForm.get('cellphoneNumber')?.value;
     const params = {
@@ -43,19 +45,11 @@ export class RegisterComponent implements OnInit {
     };
     this.authService.register(params).subscribe(
       (data) => {
-        setTimeout(() => {
-          this.authService.login({ email: params.email, senha: params.senha }).subscribe(
-            (res: any) => {
-              this.tokenService.setToken(res.token);
-              location.reload();
-            },
-            (err) => {
-              location.reload();
-            }
-          );
-        }, 1000);
+        this.isLoading = false;
+        this.goToLogin();
       },
       () => {
+        this.isLoading = false;
         this.error = 'Ocorreu um erro, verifique os dados.';
       }
     );

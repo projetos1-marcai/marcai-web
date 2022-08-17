@@ -25,6 +25,7 @@ export class NavComponent implements OnInit {
   location: string = 'Campina Grande, PB';
   logoUrl: string = '/assets/img/avatar.png';
   pageEntry = 0;
+  currentRoute = '';
 
   navForm = new FormGroup({
     search: new FormControl('')
@@ -63,7 +64,7 @@ export class NavComponent implements OnInit {
       .subscribe((e: RouterEvent) => {
         if (e instanceof NavigationEnd) {
           const currentRoute = this.router.url.split('/')[1];
-
+          this.currentRoute = currentRoute;
           if (currentRoute.includes('search')) {
             this.selected.setValue(1);
           } else {
@@ -105,7 +106,9 @@ export class NavComponent implements OnInit {
   }
 
   changeTab(event: any): void {
-    if (this.pageEntry++ !== 0) {
+    console.log(this.pageEntry);
+    console.log(this.selected.value);
+    if (this.pageEntry++ !== 0 || this.currentRoute === '' || this.currentRoute === '/') {
       switch (event.index) {
         case 0:
           this.router.navigate(['/']);
@@ -161,6 +164,9 @@ export class NavComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data) => {
       console.log(data);
+      if (data === 'HAS_ACCOUNT') {
+        this.handleLogin();
+      }
     });
   }
 }

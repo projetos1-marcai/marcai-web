@@ -13,19 +13,16 @@
 
   <div class="user-detail">
     <div class="title-container">
-      <h1> {{user.nome}} </h1>
+      <h1>{{ user.nome }}</h1>
     </div>
     <div class="user-contact-container">
-
-      <p> {{user.email}} </p>
-      <p> {{user.telefone}} </p>
+      <p>{{ user.email }}</p>
+      <p>{{ user.telefone }}</p>
     </div>
     <!-- <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span> -->
 
     <div class="description">
-
-      <p> Ainda sem descrição </p>
-
+      <p>Sem descrição</p>
     </div>
   </div>
 
@@ -34,7 +31,7 @@
     <div class="services-table" [ngClass]="{ disabled: services.length === 0 }">
       <h3 *ngIf="services.length === 0">Nenhum serviço cadastrado</h3>
       <div class="services-table-line" *ngFor="let item of services">
-        <p>{{item.servico.titulo}}</p>
+        <p>{{ item.servico.titulo }}</p>
       </div>
     </div>
 

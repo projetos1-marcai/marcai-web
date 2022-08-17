@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
     public dialogRef: MatDialogRef<LoginComponent>
   ) {}
   error!: string;
+  isLoading = false;
   ngOnInit(): void {}
 
   disableButton(): boolean {
@@ -27,17 +28,20 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
+    this.isLoading = true;
     const params = {
       email: this.loginForm.get('email')?.value,
       senha: this.loginForm.get('password')?.value
     };
     this.authService.login(params).subscribe(
       (data) => {
+        this.isLoading = false;
         this.tokenService.setUserInfo(data.usuario);
         this.tokenService.setToken(data.token);
         window.location.reload();
       },
       () => {
+        this.isLoading = false;
         this.error = 'Usuário ou senha inválidos.';
       }
     );

@@ -115,8 +115,9 @@ export class CreateComponent implements OnInit {
       this.agendaService.createAgenda(params).subscribe((data: any) => {});
 
       if (index === availableDays.length - 1) {
-        this.router.navigate([`services/${service._id}`]);
-        window.location.reload();
+        setTimeout(() => {
+          this.router.navigate([`services/${service._id}`]);
+        }, 1000);
       }
     });
   }

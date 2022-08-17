@@ -24,14 +24,14 @@ export class ProfileComponent implements OnInit {
     private tokenService: TokenService,
     private providerService: ProviderService,
     private serviceService: ServiceService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLoggedIn();
     this.user = this.tokenService.getUserInfo();
     this.userId = this.user.id_usuario;
     this.isProvider = this.user.fornecedor;
-    console.log(this.user)
+    console.log(this.user);
     this.getUser();
   }
 
@@ -47,23 +47,25 @@ export class ProfileComponent implements OnInit {
     } else {
       this.isLoading = false;
     }
+  }
 
-
+  goToProduct(item: any): void {
+    this.router.navigate([`services/${item._id}`]);
   }
 
   getServices(servicesIds: string[]): void {
-    console.log(this.isProvider)
+    console.log(this.isProvider);
 
     if (servicesIds.length === 0) {
       this.isLoading = false;
     } else {
-
       servicesIds.forEach((e: any, i: number) => {
         this.serviceService.getService(e).subscribe((data) => {
           this.services.push(data);
           if (i === servicesIds.length - 1) this.isLoading = false;
         });
       });
+      console.log(this.services);
     }
   }
 

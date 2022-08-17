@@ -1,3 +1,4 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
 <form [formGroup]="registerForm">
   <div class="register-container">
     <h1>Cadastrar</h1>
@@ -6,7 +7,7 @@
     </span>
     <div class="register-container-fields">
       <mat-radio-group formControlName="type" aria-label="Selecione uma opção" color="primary">
-        <mat-radio-button value="1">Usuário</mat-radio-button>
+        <mat-radio-button value="1">Cliente</mat-radio-button>
         <mat-radio-button value="2">Fornecedor</mat-radio-button>
       </mat-radio-group>
       <mat-form-field appearance="outline" color="primary">
