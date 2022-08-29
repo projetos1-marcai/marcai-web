@@ -15,4 +15,8 @@ export class ProviderService {
   getProvider(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/user/${id}`);
   }
+
+  getReservations(id: string, status: number): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/reserva/${id}/${status}`);
+  }
 }

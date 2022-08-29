@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class AgendaService {
   api: string = environment.apiUrl;
-  constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
+  constructor(private http: HttpClient, private environmentService: EnvironmentService) { }
 
   createAgenda(params: any): Observable<any> {
     return this.http.post(`${this.environmentService.apiUrl}/horario`, params);
@@ -20,5 +20,9 @@ export class AgendaService {
       `${this.environmentService.apiUrl}/horario/${params.id_agenda}/remover`,
       params
     );
+  }
+
+  getHorario(id: any): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/horario/${id}`);
   }
 }
