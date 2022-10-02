@@ -2,74 +2,47 @@
   <div class="landing-content">
     <div class="landing-content-section">
       <div class="landing-content-section-wrapper layout-wrapper">
-        <div class="search-container">
-          <h2>O serviço ao seu dispor</h2>
-          <p>Simplificamos o agendamento e fornecimento de serviços.</p>
-
-          <form [formGroup]="landingForm" class="search-container-field">
-            <mat-form-field appearance="outline" color="primary">
-              <mat-label>Busque por um serviço</mat-label>
-              <input
-                type="text"
-                formControlName="search"
-                matInput
-                placeholder="Serviço ou fornecedor"
-              />
-            </mat-form-field>
-            <button
-              mat-flat-button
-              class="custom-flat-button"
-              (click)="handleSearch()"
-              style="margin-left: 8px"
-            >
-              Buscar
-            </button>
-          </form>
-        </div>
         <div class="wallpaper-container">
           <img src="/assets/landing/wallpaper.png" alt="Wallpaper" />
         </div>
+        <div class="search-container">
+          <h2>
+            Encontre o
+            <span class="highlight">serviço</span>
+            ideal mais próximo de você
+          </h2>
+        </div>
       </div>
     </div>
-    <div class="landing-content-section">
-      <div class="landing-content-section-wrapper layout-wrapper">
-        <div class="main-cards-container">
-          <div class="main-card" (click)="goToServices()">
-            <h2>Serviços</h2>
-            <p>Busque o que você precisa</p>
-          </div>
-          <!-- <div class="main-card" (click)="goToProviders()">
-            <h2>Fornecedores</h2>
-            <p>Encontre o mais próximo</p>
-          </div> -->
-        </div>
+    <div class="landing-content-section layout-wrapper">
+      <form
+        [formGroup]="landingForm"
+        class="search-container-field bnp-flex bnp-gap-10 bnp-flex-justify-between"
+      >
+        <bnp-input icon="search" class="bnp-w-100">
+          <input
+            type="text"
+            formControlName="search"
+            matInput
+            placeholder="Serviço ou fornecedor"
+          />
+        </bnp-input>
+        <button
+          mat-flat-button
+          class="custom-flat-button"
+          (click)="handleSearch()"
+          style="margin-left: 8px"
+        >
+          Buscar
+        </button>
+      </form>
 
-        <div class="subcards-container">
-          <div class="subcard">
-            <div class="subcard-image">
-              <img src="/assets/landing/worker.png" alt="Worker" />
-            </div>
-            <strong>reparos</strong>
-          </div>
-          <div class="subcard">
-            <div class="subcard-image">
-              <img src="/assets/landing/hairdresser.png" alt="Worker" />
-            </div>
-            <strong>beleza</strong>
-          </div>
-          <div class="subcard">
-            <div class="subcard-image">
-              <img src="/assets/landing/executive.png" alt="Worker" />
-            </div>
-            <strong>consultoria</strong>
-          </div>
-          <div class="subcard">
-            <div class="subcard-image">
-              <img src="/assets/landing/doctor.png" alt="Worker" />
-            </div>
-            <strong>saúde</strong>
-          </div>
-        </div>
+      <div
+        class="categories-container bnp-flex bnp-flex-center bnp-flex-justify-center bnp-flex-wrap bnp-mt-30 bnp-gap-20"
+      >
+        <bnp-button type="stroked" color="gray" *ngFor="let item of categories">
+          {{ item.name.toLowerCase() }}
+        </bnp-button>
       </div>
     </div>
   </div>

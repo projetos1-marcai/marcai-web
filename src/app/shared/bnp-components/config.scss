@@ -1,0 +1,102 @@
+@import './layout.scss';
+
+@import './badge/badge.component.scss';
+@import './button/button.component.scss';
+@import './card-button/card-button.component.scss';
+@import './input/input.component.scss';
+@import './tabs/tabs.component.scss';
+@import './button-toggle/button-toggle.component.scss';
+
+:root {
+  --benup-colors-full-white: #ffffff;
+  --benup-colors-full-black: #000000;
+  --benup-colors-danger: #ff3535;
+  --benup-colors-success: #00bf85;
+
+  --benup-colors-background: #f8fbfc;
+  --benup-colors-background-alternative: #f4f7fa;
+  --benup-colors-background-secondary: #d3d3d3;
+
+  --benup-colors-text: #50555a;
+  --benup-colors-border: #d7dbde;
+  --benup-colors-secondary-border: #f4f7fa;
+  --benup-colors-placeholder: #e7eaed;
+
+  --benup-colors-accent-grey: #9ba5ae;
+  --benup-colors-secondary-grey: #eaeef0;
+
+  --benup-colors-accent-orange: #ea5812;
+  --benup-colors-secondary-orange: #fde9d9;
+
+  --benup-colors-accent-blue: #004e87;
+  --benup-colors-secondary-blue: #d9e9f4;
+
+  --benup-colors-accent-light-blue: #269cf4;
+  --benup-colors-secondary-light-blue: #deeaf9;
+
+  --benup-colors-accent-pink: #eb145f;
+  --benup-colors-secondary-pink: #ffe1e1;
+
+  --benup-colors-accent-light-green: #00bf85;
+  --benup-colors-secondary-light-green: #d9f5ed;
+
+  --benup-colors-accent-green: #008b7f;
+  --benup-colors-secondary-green: #d9f9f6;
+
+  --benup-colors-accent-yellow: #ff9100;
+  --benup-colors-secondary-yellow: #fde9d9;
+
+  --benup-shadows-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --benup-shadows-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --benup-shadows-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --benup-shadows-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --benup-fonts-size-base: 14px;
+  --benup-fonts-size-title: 19.5px;
+}
+
+.bnp-title {
+  font-family: Poppins, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: var(--benup-fonts-size-title);
+  line-height: 145%;
+  color: var(--benup-colors-text);
+
+  text-overflow: ellipsis;
+  // display: -webkit-box;
+  // -webkit-line-clamp: 2; /* number of lines to show */
+  // line-clamp: 2;
+  // -webkit-box-orient: vertical;
+
+  &.orange {
+    color: var(--benup-colors-accent-orange);
+  }
+  &.blue {
+    color: var(--benup-colors-accent-blue);
+  }
+}
+
+// ELEMENTS
+.bnp-text {
+  color: var(--benup-colors-text);
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--benup-fonts-size-base);
+  line-height: 135%;
+}
+
+.bnp-skelleton {
+  animation: bnp-skeleton-loading 0.8s linear infinite alternate;
+  border-radius: 20px;
+}
+
+@keyframes bnp-skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 85%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}

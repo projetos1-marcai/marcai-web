@@ -1,0 +1,15 @@
+.bnp-badge-wrapper {
+  border-radius: 20px;
+  min-width: 30px;
+  min-height: 26px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: lowercase;
+  font-family: 'Poppins', sans-serif;
+
+  mat-icon {
+    width: 17px;
+    height: 17px;
+    font-size: 17px;
+  }
+}

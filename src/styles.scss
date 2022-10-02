@@ -34,16 +34,28 @@ $marcai-web-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($marcai-web-theme);
 
+@import './app/shared/bnp-components/config.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import '~@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Poppins'
+);
+
+@include angular-material-typography($custom-typography);
+
 /* You can add global styles to this file, and also import other style files */
 
 :root {
   --primary-black: #616161;
 
+  --full-white: #fff;
+
   --primary-grey: #a1a6ae;
   --secondary-grey: #f4f7fa;
 
-  --primary-orange: #ea5812;
-  --darker-orange: #c54102;
+  --primary-orange: #ff914d;
+  --darker-orange: #ea5812;
 
   --primary-red: #dd3737;
 
@@ -67,7 +79,7 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif !important;
   color: #616161;
 
   p {
@@ -84,7 +96,8 @@ body {
   .custom-basic-button {
     color: var(--primary-orange);
     padding: 0px 30px;
-    height: 36px;
+    height: 42px;
+    border-radius: 25px;
     min-width: fit-content;
   }
 
@@ -92,7 +105,8 @@ body {
     background-color: var(--primary-orange);
     color: white;
     padding: 0px 30px;
-    height: 36px;
+    border-radius: 25px;
+    height: 42px;
     min-width: fit-content;
   }
 

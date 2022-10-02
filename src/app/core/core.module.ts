@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
@@ -25,7 +26,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatDialogModule,
     HttpClientModule,
-    MatTabsModule
+    MatTabsModule,
+    SharedModule
   ],
   exports: [LayoutComponent]
 })

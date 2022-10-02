@@ -1,3 +1,4 @@
+import { CATEGORIES } from './../../../shared/util/util';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -8,6 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+  categories = CATEGORIES;
+
   landingForm = new FormGroup({
     search: new FormControl('')
   });
