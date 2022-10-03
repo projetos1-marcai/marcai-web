@@ -1,3 +1,4 @@
+import { ExploreComponent } from './features/explore/explore.component';
 import { TenantInterceptor } from './core/interceptors/tenant.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
@@ -20,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProviderComponent } from './features/providers/provider/provider.component';
 import { ServiceComponent } from './features/services/service/service.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SearchComponent } from './features/search/search.component';
 import { CreateComponent } from './features/services/service/create/create.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
@@ -38,7 +38,7 @@ import { ProfileComponent } from './features/profile/profile.component';
     ServicesComponent,
     ProviderComponent,
     ServiceComponent,
-    SearchComponent,
+    ExploreComponent,
     CreateComponent,
     EditComponent,
     LoginComponent,

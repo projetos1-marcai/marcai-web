@@ -72,6 +72,15 @@ bnp-button {
         color: #000000;
         background-color: #fafafa;
       }
+
+      &.transparent {
+        background-color: transparent;
+        color: var(--benup-colors-accent-grey);
+
+        &:hover {
+          background-color: var(--benup-colors-secondary-grey);
+        }
+      }
     }
     &.outline {
       color: var(--benup-colors-accent-grey);

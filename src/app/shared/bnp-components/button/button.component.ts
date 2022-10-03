@@ -16,7 +16,7 @@ export class ButtonComponent implements OnChanges {
   @Input() icon?: string;
   @Input() disabled?: boolean;
   @Input() type?: IBnpButtonType;
-  @Input() color?: IBnpButtonColor;
+  @Input() color?: any;
   classesList: any = [];
 
   ngOnChanges(): void {

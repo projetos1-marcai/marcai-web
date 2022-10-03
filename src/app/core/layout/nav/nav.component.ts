@@ -39,13 +39,8 @@ export class NavComponent implements OnInit {
       role: 'public'
     },
     {
-      displayName: 'Buscar',
+      displayName: 'Explorar',
       route: 'search',
-      role: 'public'
-    },
-    {
-      displayName: 'Serviços',
-      route: 'services',
       role: 'public'
     }
     // {
@@ -65,7 +60,7 @@ export class NavComponent implements OnInit {
         if (e instanceof NavigationEnd) {
           const currentRoute = this.router.url.split('/')[1];
           this.currentRoute = currentRoute;
-          if (currentRoute.includes('search')) {
+          if (currentRoute.includes('explore')) {
             this.selected.setValue(1);
           } else {
             switch (currentRoute) {
@@ -75,7 +70,7 @@ export class NavComponent implements OnInit {
               case '/':
                 this.selected.setValue(0);
                 break;
-              case 'search':
+              case 'explore':
                 this.selected.setValue(1);
                 break;
               case 'services':
@@ -114,7 +109,7 @@ export class NavComponent implements OnInit {
           this.router.navigate(['/']);
           break;
         case 1:
-          this.router.navigate(['/search']);
+          this.router.navigate(['/explore']);
           break;
         case 2:
           this.router.navigate(['/services']);
