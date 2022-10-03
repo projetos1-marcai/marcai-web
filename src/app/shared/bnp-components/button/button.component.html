@@ -1,0 +1,12 @@
+<div
+  class="bnp-button-wrapper bnp-flex bnp-px-30 bnp-flex-center bnp-flex-justify-center"
+  [ngClass]="classesList"
+  [ngStyle]="{ width: width }"
+>
+  <ng-container *ngIf="icon">
+    <mat-icon class="icon-only">
+      {{ icon }}
+    </mat-icon>
+  </ng-container>
+  <ng-content></ng-content>
+</div>

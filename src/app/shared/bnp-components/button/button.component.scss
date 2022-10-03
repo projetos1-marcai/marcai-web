@@ -1,0 +1,133 @@
+bnp-button {
+  .bnp-button-wrapper {
+    cursor: pointer;
+    position: relative;
+    height: 42px;
+    width: fit-content;
+    font-weight: 500;
+    font-size: var(--benup-fonts-size-base);
+    white-space: nowrap;
+    border-radius: 25px;
+    letter-spacing: 0.2px;
+    transition: filter 0.25s, background-color 0.25s;
+
+    &.icon {
+      padding: 10px;
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+      border-radius: 15px;
+
+      mat-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 18px;
+      }
+    }
+
+    mat-icon:not(.icon-only) {
+      width: 22px;
+      height: 22px;
+      font-size: 22px;
+      margin-right: 6px;
+    }
+    &:hover {
+      filter: brightness(0.97);
+    }
+
+    &:active:not(&.disabled) {
+      filter: brightness(0.9);
+    }
+
+    // PATTERN
+    color: var(--benup-colors-accent-grey);
+    background-color: var(--benup-colors-secondary-grey);
+
+    &.filled {
+      &.orange {
+        color: var(--benup-colors-full-white);
+        border: 1px solid var(--benup-colors-accent-orange);
+        background-color: var(--benup-colors-accent-orange);
+      }
+      &.white {
+        color: var(--benup-colors-accent-orange);
+        border: 1px solid var(--benup-colors-full-white);
+        background-color: var(--benup-colors-full-white);
+      }
+    }
+    &.stroked {
+      &.blue {
+        color: var(--benup-colors-accent-blue);
+        background-color: var(--benup-colors-secondary-blue);
+      }
+      &.orange {
+        color: var(--benup-colors-accent-orange);
+        background-color: var(--benup-colors-secondary-orange);
+      }
+      &.pink {
+        color: var(--benup-colors-accent-pink);
+        background-color: var(--benup-colors-secondary-pink);
+      }
+      &.gray {
+        color: #000000;
+        background-color: #fafafa;
+      }
+
+      &.transparent {
+        background-color: transparent;
+        color: var(--benup-colors-accent-grey);
+
+        &:hover {
+          background-color: var(--benup-colors-secondary-grey);
+        }
+      }
+    }
+    &.outline {
+      color: var(--benup-colors-accent-grey);
+      border: 1px solid var(--benup-colors-accent-grey);
+      background-color: transparent;
+      &:hover {
+        background-color: var(--benup-colors-secondary-grey);
+      }
+      &.blue {
+        color: var(--benup-colors-accent-blue);
+        border: 1px solid var(--benup-colors-accent-blue);
+        background-color: transparent;
+        &:hover {
+          background-color: var(--benup-colors-secondary-blue);
+        }
+      }
+      &.orange {
+        color: var(--benup-colors-accent-orange);
+        border: 1px solid var(--benup-colors-accent-orange);
+        background-color: transparent;
+        &:hover {
+          background-color: var(--benup-colors-secondary-orange);
+        }
+      }
+      &.pink {
+        color: var(--benup-colors-accent-pink);
+        border: 1px solid var(--benup-colors-accent-pink);
+        background-color: transparent;
+        &:hover {
+          background-color: var(--benup-colors-secondary-pink);
+        }
+      }
+    }
+
+    &.disabled {
+      cursor: default;
+      pointer-events: none;
+      color: var(--benup-colors-accent-grey) !important;
+      background-color: var(--benup-colors-secondary-grey) !important;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .bnp-button-wrapper {
+      height: 40px;
+      padding: 10px 20px;
+      border-radius: 15px;
+    }
+  }
+}

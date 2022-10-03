@@ -1,4 +1,4 @@
-import { ServiceService } from './../../core/services/service/service.service';
+import { ServiceService } from '../../core/services/service/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,10 +6,10 @@ type SearchType = 'service' | 'provider';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  templateUrl: './explore.component.html',
+  styleUrls: ['./explore.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class ExploreComponent implements OnInit {
   query!: string;
   search!: string;
   type: SearchType = 'service';

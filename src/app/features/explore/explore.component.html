@@ -1,15 +1,19 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="search-container layout-wrapper">
+  <div class="settings-container bnp-flex bnp-gap-10 bnp-mb-30 bnp-flex-center">
+    <bnp-button type="stroked" color="orange"> Serviço </bnp-button>
+    <bnp-button type="stroked" color="transparent"> Fornecedor </bnp-button>
+  </div>
   <div class="search-container-field">
-    <mat-form-field appearance="outline" color="primary">
+    <bnp-input icon="search" class="bnp-w-100">
       <input
         type="text"
         [(ngModel)]="search"
-        (keydown.enter)="getSearch()"
         matInput
-        placeholder="Busque por um serviço"
+        placeholder="Estou procurando por"
+        (keydown.enter)="getSearch()"
       />
-    </mat-form-field>
+    </bnp-input>
     <button
       mat-flat-button
       class="custom-flat-button"

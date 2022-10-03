@@ -1,3 +1,4 @@
+import { CATEGORIES } from './../../../shared/util/util';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -8,6 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+  categories = CATEGORIES;
+
   landingForm = new FormGroup({
     search: new FormControl('')
   });
@@ -18,13 +21,10 @@ export class LandingComponent implements OnInit {
   handleSearch(): void {
     const value = this.landingForm.get('search')!.value;
     if (value !== '') {
-      this.router.navigate([`search`], { queryParams: { q: value } });
+      this.router.navigate([`explore`], { queryParams: { q: value } });
     }
   }
 
-  goToServices(): void {
-    this.router.navigate(['services']);
-  }
   handleLocation(): void {}
 
   handleLogin(): void {}
