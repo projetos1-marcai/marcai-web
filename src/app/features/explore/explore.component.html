@@ -1,8 +1,20 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="search-container layout-wrapper">
-  <div class="settings-container bnp-flex bnp-gap-10 bnp-mb-30 bnp-flex-center">
-    <bnp-button type="stroked" color="orange"> Serviço </bnp-button>
-    <bnp-button type="stroked" color="transparent"> Fornecedor </bnp-button>
+  <div class="settings-container bnp-flex bnp-gap-10 bnp-mb-20 bnp-flex-center">
+    <bnp-button
+      type="stroked"
+      [color]="type === 'service' ? 'orange' : 'transparent'"
+      (click)="switchType('service')"
+    >
+      Serviço
+    </bnp-button>
+    <bnp-button
+      type="stroked"
+      [color]="type === 'provider' ? 'orange' : 'transparent'"
+      (click)="switchType('provider')"
+    >
+      Fornecedor
+    </bnp-button>
   </div>
   <div class="search-container-field">
     <bnp-input icon="search" class="bnp-w-100">
@@ -11,43 +23,68 @@
         [(ngModel)]="search"
         matInput
         placeholder="Estou procurando por"
-        (keydown.enter)="getSearch()"
+        (keydown.enter)="handleSearch()"
       />
     </bnp-input>
     <button
       mat-flat-button
       class="custom-flat-button"
-      (click)="getSearch()"
+      (click)="handleSearch()"
       style="margin-left: 8px"
     >
       Buscar
     </button>
   </div>
-  <h1 *ngIf="query">
-    Buscando por <span style="color: var(--primary-orange)">{{ query }}</span>
+  <div
+    class="categories-container bnp-flex bnp-flex-center bnp-flex-justify-start bnp-flex-wrap bnp-my-30 bnp-gap-20"
+  >
+    <bnp-button
+      type="stroked"
+      [color]="category === item.id ? 'orange' : 'gray'"
+      *ngFor="let item of categories"
+      (click)="category = item.id; handleSearch()"
+    >
+      {{ item.name.toLowerCase() }}
+    </bnp-button>
+  </div>
+  <h1 class="bnp-pt-20">
+    <ng-container *ngIf="lastSearch">
+      Buscando por <span style="color: var(--primary-orange)">{{ lastSearch }}</span>
+    </ng-container>
+    <ng-container *ngIf="!lastSearch">
+      <ng-container *ngIf="type === 'service'"> Todos os serviços </ng-container>
+      <ng-container *ngIf="type === 'provider'"> Todos os fornecedores </ng-container>
+    </ng-container>
   </h1>
   <!-- <div class="filters-container"></div> -->
 
-  <div class="search-container-listing" *ngIf="this.type === 'service'">
-    <div class="search-container-listing-item" *ngFor="let item of services">
-      <div class="provider-wrapper">
-        <div class="image-wrapper">
-          <img [src]="item?.logo_url" />
+  <div class="search-container-listing">
+    <ng-container *ngIf="this.type === 'service'">
+      <div class="search-container-listing-item" *ngFor="let item of services">
+        <div class="provider-wrapper">
+          <div class="image-wrapper">
+            <img [src]="item?.logo_url" />
+          </div>
+          <div class="provider-wrapper-info">
+            <h1>{{ item?.fornecedor }}</h1>
+          </div>
         </div>
-        <div class="provider-wrapper-info">
-          <h1>{{ item?.fornecedor }}</h1>
+        <div class="service-info-wrapper" (click)="goToService(item)">
+          <h2>{{ item?.titulo }}</h2>
+          <p>{{ item?.descricao }}</p>
+          <span>{{ item?.valor | currency: 'BRL':'symbol' }}</span>
         </div>
       </div>
-      <div class="service-info-wrapper" (click)="goToService(item)">
-        <h2>{{ item?.titulo }}</h2>
-        <p>{{ item?.descricao }}</p>
-        <span>{{ item?.valor | currency: 'BRL':'symbol' }}</span>
+      <div class="search-container-empty" *ngIf="this.services.length === 0">
+        <img src="/assets/img/empty.jpg" alt="Empty" />
+        <h3>Nenhum resultado encontrado</h3>
       </div>
-    </div>
+    </ng-container>
   </div>
 
-  <div class="search-container-empty" *ngIf="this.services.length === 0">
-    <img src="/assets/img/empty.jpg" alt="Empty" />
-    <h3>Nenhum resultado encontrado</h3>
+  <div class="providers-container-listing">
+    <ng-container *ngIf="this.type === 'provider'">
+      Em breve uma lista completa de todos os fornecedores.
+    </ng-container>
   </div>
 </div>

@@ -9,15 +9,9 @@ const routes: Routes = [
   { path: 'explore', component: ExploreComponent },
   { path: 'profile', component: ProfileComponent },
   {
-    path: 'providers',
+    path: 'service',
     loadChildren: () =>
-      import('./features/providers/providers-routing.module').then((m) => m.ProvidersRoutingModule)
-    // canActivate: [AuthGuardService],
-  },
-  {
-    path: 'services',
-    loadChildren: () =>
-      import('./features/services/services-routing.module').then((m) => m.ServicesRoutingModule)
+      import('./features/service/service-routing.module').then((m) => m.ServiceRoutingModule)
     // canActivate: [AuthGuardService],
   }
 ];

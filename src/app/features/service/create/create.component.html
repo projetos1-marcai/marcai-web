@@ -1,18 +1,25 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="create-container layout-wrapper">
-  <h1>Editar serviço</h1>
+  <h1>Cadastrar um serviço</h1>
   <h2 class="title-container">Dados do serviço</h2>
 
   <img
-    *ngIf="editForm.get('logo')?.value.file !== null"
-    [src]="editForm.get('logo')?.value.base64"
+    *ngIf="createForm.get('logo')?.value.file !== null"
+    [src]="createForm.get('logo')?.value.base64"
     class="image-preview"
     style="height: 150px; width: auto; max-width: 400px"
   />
-  <form [formGroup]="editForm">
+  <p
+    *ngIf="createForm.get('logo')?.value.file !== null"
+    style="color: var(--benup-colors-danger); cursor: pointer"
+    (click)="createForm.get('logo')?.setValue({ uploaded: false, file: null, base64: null })"
+  >
+    Remover imagem
+  </p>
+  <form [formGroup]="createForm">
     <div class="create-container-form">
       <app-file-uploader
-        [file]="editForm.get('logo')"
+        [file]="createForm.get('logo')"
         accept="image/png, image/jpeg"
         title="Selecionar imagem"
         (onSelect)="onFileSelected($event)"
@@ -61,10 +68,10 @@
     </div>
 
     <div class="create-container-agenda">
-      <h2 class="title-container">Horários ocupados</h2>
-
+      <h2 class="title-container">Dias e horários de atendimento</h2>
+      <p>Marque os dias e horários de trabalho</p>
       <form [formGroup]="agendaForm">
-        <div class="create-container-agenda-content">
+        <div class="create-container-agenda-content bnp-mt-30">
           <div class="create-container-agenda-content-item">
             <div class="create-container-agenda-content-item-day">
               <mat-slide-toggle color="primary" formControlName="monday">
@@ -82,6 +89,21 @@
                 formControlName="mondayEnd"
                 [ngClass]="{ disabled: !agendaForm.get('monday')!.value }"
               />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('monday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="mondayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('monday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="mondayStopEnd"
+                [ngClass]="{ disabled: !agendaForm.get('monday')!.value }"
+              />
             </div>
           </div>
           <div class="create-container-agenda-content-item">
@@ -97,6 +119,21 @@
               <input
                 type="time"
                 formControlName="tuesdayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('tuesday')!.value }"
+              />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('tuesday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="tuesdayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('tuesday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="tuesdayStopEnd"
                 [ngClass]="{ disabled: !agendaForm.get('tuesday')!.value }"
               />
             </div>
@@ -118,6 +155,21 @@
                 formControlName="wednesdayEnd"
                 [ngClass]="{ disabled: !agendaForm.get('wednesday')!.value }"
               />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('wednesday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="wednesdayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('wednesday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="wednesdayStopEnd"
+                [ngClass]="{ disabled: !agendaForm.get('wednesday')!.value }"
+              />
             </div>
           </div>
           <div class="create-container-agenda-content-item">
@@ -137,6 +189,21 @@
                 formControlName="thursdayEnd"
                 [ngClass]="{ disabled: !agendaForm.get('thursday')!.value }"
               />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('thursday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="thursdayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('thursday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="thursdayStopEnd"
+                [ngClass]="{ disabled: !agendaForm.get('thursday')!.value }"
+              />
             </div>
           </div>
           <div class="create-container-agenda-content-item">
@@ -152,6 +219,21 @@
               <input
                 type="time"
                 formControlName="fridayEnd"
+                [ngClass]="{ disabled: !agendaForm.get('friday')!.value }"
+              />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('friday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="fridayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('friday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="fridayStopEnd"
                 [ngClass]="{ disabled: !agendaForm.get('friday')!.value }"
               />
             </div>
@@ -173,6 +255,21 @@
                 formControlName="saturdayEnd"
                 [ngClass]="{ disabled: !agendaForm.get('saturday')!.value }"
               />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('saturday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="saturdayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('saturday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="saturdayStopEnd"
+                [ngClass]="{ disabled: !agendaForm.get('saturday')!.value }"
+              />
             </div>
           </div>
           <div class="create-container-agenda-content-item">
@@ -192,6 +289,21 @@
                 formControlName="sundayEnd"
                 [ngClass]="{ disabled: !agendaForm.get('sunday')!.value }"
               />
+
+              <p class="bnp-pl-30" [ngClass]="{ disabled: !agendaForm.get('sunday')!.value }">
+                Horário de intervalo
+              </p>
+
+              <input
+                type="time"
+                formControlName="sundayStopStart"
+                [ngClass]="{ disabled: !agendaForm.get('sunday')!.value }"
+              />
+              <input
+                type="time"
+                formControlName="sundayStopEnd"
+                [ngClass]="{ disabled: !agendaForm.get('sunday')!.value }"
+              />
             </div>
           </div>
         </div>
@@ -207,7 +319,7 @@
       class="custom-flat-button"
       mat-flat-button
     >
-      Salvar
+      Cadastrar serviço
     </button>
   </footer>
 </div>

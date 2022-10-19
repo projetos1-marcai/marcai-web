@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { ExploreComponent } from './features/explore/explore.component';
 import { TenantInterceptor } from './core/interceptors/tenant.interceptor';
 import { SharedModule } from './shared/shared.module';
@@ -14,36 +15,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProvidersComponent } from './features/providers/providers.component';
-import { ServicesComponent } from './features/services/services.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProviderComponent } from './features/providers/provider/provider.component';
-import { ServiceComponent } from './features/services/service/service.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CreateComponent } from './features/services/service/create/create.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { EditComponent } from './features/services/service/edit/edit.component';
 
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProfileComponent } from './features/profile/profile.component';
+import { ServiceComponent } from './features/service/service.component';
+import { EditComponent } from './features/service/edit/edit.component';
+import { CreateComponent } from './features/service/create/create.component';
+
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { ScheduleComponent } from './features/service/components/schedule/schedule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProvidersComponent,
-    ServicesComponent,
-    ProviderComponent,
-    ServiceComponent,
     ExploreComponent,
-    CreateComponent,
-    EditComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    ServiceComponent,
+    EditComponent,
+    CreateComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +63,9 @@ import { ProfileComponent } from './features/profile/profile.component';
     NgxMaskModule.forRoot(),
     CurrencyMaskModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    NzDatePickerModule,
+    MatDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TenantInterceptor, multi: true }],
