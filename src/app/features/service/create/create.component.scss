@@ -9,7 +9,6 @@
 
   .title-container {
     background-color: var(--secondary-grey);
-    border-radius: 6px;
     padding: 10px 20px;
     margin: 30px 0;
   }
@@ -83,14 +82,14 @@
             border-radius: 5px;
             border: 1px solid var(--border-color);
             color: var(--primary-black);
-
-            &.disabled {
-              opacity: 0.5;
-              pointer-events: none;
-            }
+            cursor: pointer;
           }
         }
       }
+    }
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 

@@ -1,0 +1,43 @@
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="service-container layout-wrapper">
+  <div class="back-button">
+    <button mat-flat-button class="custom-rounded-outline-button" (click)="backToList()">
+      Voltar
+    </button>
+
+    <button
+      *ngIf="isLogged && user.fornecedor === true && user.nome === service.fornecedor"
+      mat-flat-button
+      class="custom-flat-button"
+      (click)="editService()"
+      style="margin-left: 4px"
+    >
+      Editar serviço
+    </button>
+  </div>
+  <div class="nav-wrapper">
+    <p class="provider-name">{{ service.fornecedor }}</p>
+    <mat-icon>chevron_right</mat-icon>
+    <p class="service-name">{{ service.titulo }}</p>
+  </div>
+
+  <div class="service-detail">
+    <img
+      *ngIf="service?.logo_url !== null"
+      [src]="service?.logo_url"
+      class="image-preview"
+      style="height: 150px; width: auto; max-width: 400px; margin-bottom: 20px"
+    />
+    <div class="title-container">
+      <h1>{{ service.titulo }}</h1>
+      <mat-icon>share</mat-icon>
+    </div>
+    <span *ngIf="service.disponivel === true" class="available">Agendamento disponível</span>
+    <div class="description">
+      {{ service.descricao }}
+    </div>
+  </div>
+  <div class="service-schedule">
+    <h2 class="title-container">Horários</h2>
+  </div>
+</div>

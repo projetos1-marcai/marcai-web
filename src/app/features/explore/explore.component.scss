@@ -1,5 +1,5 @@
 .search-container {
-  margin: 30px auto;
+  margin: 20px auto;
   color: var(--primary-black);
   padding-bottom: 80px !important;
 
@@ -32,6 +32,7 @@
         .image-wrapper {
           border-radius: 50%;
           overflow: hidden;
+          background-color: aliceblue;
           height: 40px;
           width: 40px;
           margin-right: 10px;
@@ -96,6 +97,7 @@
     }
 
     img {
+      filter: hue-rotate(170deg);
       height: 200px;
       width: auto;
     }

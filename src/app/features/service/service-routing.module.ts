@@ -1,17 +1,11 @@
-import { EditComponent } from './service/edit/edit.component';
-import { CreateComponent } from './service/create/create.component';
-import { ServiceComponent } from './service/service.component';
-import { ServicesComponent } from './services.component';
+import { EditComponent } from './edit/edit.component';
+import { CreateComponent } from './create/create.component';
+import { ServiceComponent } from './service.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: '',
-    // canActivate: [AuthGuardService],
-    component: ServicesComponent
-  },
   {
     path: 'create',
     // canActivate: [AuthGuardService],
@@ -33,4 +27,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ServicesRoutingModule {}
+export class ServiceRoutingModule {}

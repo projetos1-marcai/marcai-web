@@ -1,7 +1,7 @@
-import { TokenService } from './../../../core/services/token/token.service';
-import { ServiceService } from './../../../core/services/service/service.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ServiceService } from 'src/app/core/services/service/service.service';
+import { TokenService } from 'src/app/core/services/token/token.service';
 
 @Component({
   selector: 'app-service',
@@ -15,6 +15,7 @@ export class ServiceComponent implements OnInit {
   isLoading: boolean = false;
   isLogged = false;
   user: any;
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -39,7 +40,7 @@ export class ServiceComponent implements OnInit {
   }
 
   editService(): void {
-    this.router.navigate([`services/${this.serviceId}/edit`]);
+    this.router.navigate([`service/${this.serviceId}/edit`]);
   }
 
   goToProvider(): void {
@@ -47,26 +48,6 @@ export class ServiceComponent implements OnInit {
   }
 
   backToList(): void {
-    this.router.navigate([`services`]);
-  }
-
-  getSchedulingDuration(item: any): string {
-    // agenda: "62d31154c982436372620300"
-    // cliente: null
-    // createdAt: "2022-07-16T20:30:58.915Z"
-    // disponivel: true
-    // fim: "2022-07-16T10:00:00.000Z"
-    // inicio: "2022-07-16T08:00:00.000Z"
-    // updatedAt: "2022-07-16T20:30:58.915Z"
-    // __v: 0
-    // _id: "62d3200280b9eb38bfd368d2"
-
-    var begin = new Date(item.inicio);
-    var end = new Date(item.fim);
-
-    var beginString = `${begin.getHours()}:${begin.getMinutes()}`;
-    var endString = `${end.getHours()}:${end.getMinutes()}`;
-
-    return beginString + ' - ' + endString;
+    this.router.navigate([`explore`]);
   }
 }

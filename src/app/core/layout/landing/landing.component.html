@@ -40,7 +40,12 @@
       <div
         class="categories-container bnp-flex bnp-flex-center bnp-flex-justify-center bnp-flex-wrap bnp-mt-30 bnp-gap-20"
       >
-        <bnp-button type="stroked" color="gray" *ngFor="let item of categories">
+        <bnp-button
+          type="stroked"
+          color="gray"
+          *ngFor="let item of categories"
+          (click)="handleCategory(item)"
+        >
           {{ item.name.toLowerCase() }}
         </bnp-button>
       </div>

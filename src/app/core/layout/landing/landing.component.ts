@@ -25,11 +25,7 @@ export class LandingComponent implements OnInit {
     }
   }
 
-  handleLocation(): void {}
-
-  handleLogin(): void {}
-
-  handleRegistration(): void {}
-
-  goToProviders(): void {}
+  handleCategory(category: any): void {
+    this.router.navigate([`explore`], { queryParams: { category: category.id } });
+  }
 }
