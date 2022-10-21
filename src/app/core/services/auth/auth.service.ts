@@ -10,13 +10,13 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   api: string = environment.apiUrl;
 
-  constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
+  constructor(private http: HttpClient, private environmentService: EnvironmentService) { }
 
   login(params: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/login`, params);
+    return this.http.post(`${environment.apiUrl}/usuario/login`, params);
   }
 
   register(params: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/user`, params);
+    return this.http.post(`${environment.apiUrl}/usuario`, params);
   }
 }
