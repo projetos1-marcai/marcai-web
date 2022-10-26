@@ -1,9 +1,19 @@
 <div class="schedule-container bnp-p-20">
   <h1>Horário</h1>
 
-  <h2>Escolha o horário de início</h2>
-
   <form [formGroup]="scheduleForm">
+    <h2>Escolha o dia</h2>
+
+    <mat-form-field appearance="outline" class="bnp-mb-30">
+      <mat-label>Selecione</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <h2>Escolha o horário de início</h2>
     <div class="schedule-container-content bnp-flex bnp-gap-20">
       <mat-form-field appearance="outline">
         <mat-label>Hora</mat-label>
@@ -54,7 +64,7 @@
       color="orange"
       [disabled]="scheduleForm.invalid"
       (click)="onSubmit()"
-      >Adicionar</bnp-button
+      >Reservar</bnp-button
     >
   </div>
 </div>

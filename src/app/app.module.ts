@@ -29,9 +29,9 @@ import { ServiceComponent } from './features/service/service.component';
 import { EditComponent } from './features/service/edit/edit.component';
 import { CreateComponent } from './features/service/create/create.component';
 
-import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { ScheduleComponent } from './features/service/components/schedule/schedule.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,9 +63,10 @@ import { ScheduleComponent } from './features/service/components/schedule/schedu
     NgxMaskModule.forRoot(),
     CurrencyMaskModule,
     MatSnackBarModule,
+    MatDatepickerModule,
     MatRadioModule,
-    NzDatePickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TenantInterceptor, multi: true }],

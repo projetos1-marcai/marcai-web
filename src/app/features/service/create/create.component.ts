@@ -97,6 +97,15 @@ export class CreateComponent implements OnInit {
       ...this.createForm.value,
       logo_url: this.createForm.get('logo')?.value.base64
     };
+
+    this.serviceService.createService(params).subscribe(
+      (data) => {
+        this.router.navigate([`service/${data.servico._id}`]);
+      },
+      (err) => {
+        this._snackBar.open('Ocorreu um erro, revise os dados e tente novamente.');
+      }
+    );
   }
 
   addSchedule(day: any): void {

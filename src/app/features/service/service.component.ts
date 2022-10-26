@@ -1,3 +1,5 @@
+import { ScheduleComponent } from './components/schedule/schedule.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ServiceService } from 'src/app/core/services/service/service.service';
@@ -20,13 +22,16 @@ export class ServiceComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private serviceService: ServiceService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.serviceId = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.isLogged = this.tokenService.isLoggedIn();
     this.user = this.tokenService.getUserInfo();
+    console.log(this.isLogged);
+    console.log(this.user);
     this.getService();
   }
 
@@ -35,6 +40,7 @@ export class ServiceComponent implements OnInit {
     this.serviceService.getService(this.serviceId).subscribe((data) => {
       this.agenda = data.agenda;
       this.service = data.servico;
+      console.log(data);
       this.isLoading = false;
     });
   }
@@ -49,5 +55,20 @@ export class ServiceComponent implements OnInit {
 
   backToList(): void {
     this.router.navigate([`explore`]);
+  }
+
+  onSubmit(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = '550px';
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = {};
+
+    const dialogRef = this.dialog.open(ScheduleComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((data) => {
+      console.log(data);
+    });
   }
 }

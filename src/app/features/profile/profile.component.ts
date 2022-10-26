@@ -17,16 +17,16 @@ import { AgendaService } from 'src/app/core/services/agenda/agenda.service';
 export class ProfileComponent implements OnInit {
   user: any;
   userId?: string;
-  services: any[] = [];
   isLogged = false;
   isLoading: boolean = false;
+  services: any[] = [];
   isProvider: boolean = false;
   reservations: Map<string, any[]> = new Map();
   constructor(
     private router: Router,
-    private tokenService: TokenService,
     private providerService: ProviderService,
     private serviceService: ServiceService,
+    private tokenService: TokenService,
     private userService: UserService,
     private agendaService: AgendaService
   ) {}

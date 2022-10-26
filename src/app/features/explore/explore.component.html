@@ -1,6 +1,6 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="search-container layout-wrapper">
-  <div class="settings-container bnp-flex bnp-gap-10 bnp-mb-20 bnp-flex-center">
+  <div class="settings-container bnp-flex bnp-gap-10 bnp-my-20 bnp-flex-center">
     <bnp-button
       type="stroked"
       [color]="type === 'service' ? 'orange' : 'transparent'"
@@ -14,6 +14,17 @@
       (click)="switchType('provider')"
     >
       Fornecedor
+    </bnp-button>
+
+    <bnp-button
+      *ngIf="isProvider"
+      type="outline"
+      style="margin-left: auto"
+      [color]="'orange'"
+      (click)="createService()"
+    >
+      <mat-icon>add</mat-icon>
+      Adicionar
     </bnp-button>
   </div>
   <div class="search-container-field">
@@ -42,7 +53,7 @@
       type="stroked"
       [color]="category === item.id ? 'orange' : 'gray'"
       *ngFor="let item of categories"
-      (click)="category = item.id; handleSearch()"
+      (click)="category !== item.id ? (category = item.id) : (category = null); handleSearch()"
     >
       {{ item.name.toLowerCase() }}
     </bnp-button>

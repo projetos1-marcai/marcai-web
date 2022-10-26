@@ -2,6 +2,8 @@ import { CATEGORIES } from 'src/app/shared/util/util';
 import { ServiceService } from '../../core/services/service/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/core/services/token/token.service';
+import { UserService } from 'src/app/core/services/user/user.service';
 
 type SearchType = 'service' | 'provider';
 
@@ -19,10 +21,18 @@ export class ExploreComponent implements OnInit {
 
   services: any = [];
   isLoading: boolean = false;
+
+  userId?: string;
+  isLogged = false;
+  user: any;
+  isProvider: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private serviceService: ServiceService,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService,
+    private userService: UserService
   ) {
     this.route.queryParams.subscribe((params: any) => {
       this.search = params.q ? params.q : '';
@@ -31,6 +41,14 @@ export class ExploreComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLogged = this.tokenService.isLoggedIn();
+    this.user = this.tokenService.getUserInfo();
+    this.userId = this.user.id_usuario;
+    this.isProvider = this.user.fornecedor;
+
+    console.log(this.user);
+    console.log(this.isProvider);
+    console.log(this.isLogged);
     this.handleSearch();
   }
 
@@ -76,6 +94,10 @@ export class ExploreComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+
+  createService(): void {
+    this.router.navigate(['/service/create']);
   }
 
   filterServicesByCategory(): void {

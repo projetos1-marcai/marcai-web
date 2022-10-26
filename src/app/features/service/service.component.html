@@ -6,7 +6,7 @@
     </button>
 
     <button
-      *ngIf="isLogged && user.fornecedor === true && user.nome === service.fornecedor"
+      *ngIf="isLogged && user.fornecedor === true && user.id_usuario === service.fornecedor"
       mat-flat-button
       class="custom-flat-button"
       (click)="editService()"
@@ -40,4 +40,15 @@
   <div class="service-schedule">
     <h2 class="title-container">Horários</h2>
   </div>
+
+  <footer class="bnp-flex bnp-mt-30">
+    <button
+      mat-flat-button
+      class="custom-flat-button"
+      (click)="onSubmit()"
+      style="margin-left: auto"
+    >
+      Realizar agendamento
+    </button>
+  </footer>
 </div>

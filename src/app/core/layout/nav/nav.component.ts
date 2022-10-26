@@ -73,14 +73,8 @@ export class NavComponent implements OnInit {
               case 'explore':
                 this.selected.setValue(1);
                 break;
-              case 'services':
-                this.selected.setValue(2);
-                break;
               case 'profile':
-                this.selected.setValue(3);
-                break;
-              case 'providers':
-                this.selected.setValue(4);
+                this.selected.setValue(2);
                 break;
               default:
                 break;
@@ -101,8 +95,7 @@ export class NavComponent implements OnInit {
   }
 
   changeTab(event: any): void {
-    console.log(this.pageEntry);
-    console.log(this.selected.value);
+    console.log(event);
     if (this.pageEntry++ !== 0 || this.currentRoute === '' || this.currentRoute === '/') {
       switch (event.index) {
         case 0:
@@ -112,13 +105,7 @@ export class NavComponent implements OnInit {
           this.router.navigate(['/explore']);
           break;
         case 2:
-          this.router.navigate(['/services']);
-          break;
-        case 3:
           this.router.navigate(['/profile']);
-          break;
-        case 4:
-          this.router.navigate(['/providers']);
           break;
       }
     }
