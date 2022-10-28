@@ -9,6 +9,18 @@ import { AgendaService } from 'src/app/core/services/agenda/agenda.service';
 
 // type SearchType = 'service' | 'provider';
 
+const weekDays = new Map(
+  [
+    ["domingo", "Domingo"],
+    ["segunda", "Segunda"],
+    ["terca", "Terça"],
+    ["quarta", "Quarta"],
+    ["quinta", "Quinta"],
+    ["sexta", "Sexta"],
+    ["sabado", "Sábado"],
+  ]
+)
+
 @Component({
   selector: 'app-search',
   templateUrl: './profile.component.html',
@@ -48,10 +60,13 @@ export class ProfileComponent implements OnInit {
     this.agendaService.getReservations().subscribe((data) => {
 
       data.reservas.forEach((e: any) => {
-        this.clientReservations.push(e);
-        this.agendaService.getReservationById(e._id).subscribe((t) => {
-          console.log(t);
-        })
+        this.clientReservations.push({
+          service: e.servico,
+          weekDay: weekDays.get(e.dia),
+          reserva: e.reserva,
+        });
+        console.log(e);
+
       })
       console.log(this.clientReservations)
     })

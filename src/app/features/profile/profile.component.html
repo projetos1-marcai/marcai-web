@@ -34,9 +34,9 @@
     <h3 *ngIf="clientReservations.length === 0">Nenhum reserva feita</h3>
     <div class="clientReservations-list" [ngClass]="{ disabled: clientReservations.length === 0 }">
       <div class="clientReservations-list-line" *ngFor="let item of clientReservations">
-        <p class="clientReservations-list-line-title">Nome do serviço</p>
-        <p>{{ getSchedulingDuration(item)}}</p>
-        <p>Dia da semana</p>
+        <p class="clientReservations-list-line-title">{{item.service}}</p>
+        <p>{{ getSchedulingDuration(item.reserva)}}</p>
+        <p>{{item.weekDay}}</p>
 
         <!-- <p class="clientReservations-table-line-title">{{ item.servico.titulo }}</p>
         <p class="clientReservations-table-line-reservations" *ngFor="let res of reservations.get(item.servico._id)">
