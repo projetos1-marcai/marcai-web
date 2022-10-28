@@ -15,4 +15,5 @@ export class UserService {
   getUser(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/user/${id}`);
   }
+
 }

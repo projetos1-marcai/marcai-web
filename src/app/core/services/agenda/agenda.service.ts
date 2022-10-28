@@ -25,4 +25,12 @@ export class AgendaService {
   getHorario(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/horario/${id}`);
   }
+
+  getReservations(): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/agenda/usuario/reservas`);
+  }
+
+  getReservationById(id: string): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/agenda/reserva/${id}`);
+  }
 }

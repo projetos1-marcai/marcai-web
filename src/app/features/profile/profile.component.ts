@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit {
   services: any[] = [];
   isProvider: boolean = false;
   reservations: Map<string, any[]> = new Map();
+  clientReservations: any[] = [];
+
   constructor(
     private router: Router,
     private providerService: ProviderService,
@@ -29,7 +31,7 @@ export class ProfileComponent implements OnInit {
     private tokenService: TokenService,
     private userService: UserService,
     private agendaService: AgendaService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLoggedIn();
@@ -37,6 +39,23 @@ export class ProfileComponent implements OnInit {
     this.userId = this.user.id_usuario;
     this.isProvider = this.user.fornecedor;
     this.getUser();
+    this.loadClientReservations();
+
+
+  }
+
+  loadClientReservations(): void {
+    this.agendaService.getReservations().subscribe((data) => {
+
+      data.reservas.forEach((e: any) => {
+        this.clientReservations.push(e);
+        this.agendaService.getReservationById(e._id).subscribe((t) => {
+          console.log(t);
+        })
+      })
+      console.log(this.clientReservations)
+    })
+
   }
 
   getUser(): void {

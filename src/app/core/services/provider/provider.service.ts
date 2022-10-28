@@ -13,7 +13,7 @@ export class ProviderService {
   constructor(private http: HttpClient, private environmentService: EnvironmentService) { }
 
   getProvider(id: any): Observable<any> {
-    return this.http.get(`${this.environmentService.apiUrl}/user/${id}`);
+    return this.http.get(`${this.environmentService.apiUrl}/usuario/${id}`);
   }
 
   getReservations(id: string, status: number): Observable<any> {
