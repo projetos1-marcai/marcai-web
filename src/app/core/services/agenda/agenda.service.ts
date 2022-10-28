@@ -9,21 +9,32 @@ import { Injectable } from '@angular/core';
 })
 export class AgendaService {
   api: string = environment.apiUrl;
-  constructor(private http: HttpClient, private environmentService: EnvironmentService) { }
+  constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
 
-  createAgenda(params: any): Observable<any> {
-    return this.http.post(`${this.environmentService.apiUrl}/horario`, params);
+  createAgenda(params: any, serviceId: any): Observable<any> {
+    return this.http.post(`${this.environmentService.apiUrl}/agenda/horario/${serviceId}`, params);
+  }
+
+  editAgenda(params: any, agendaId: any): Observable<any> {
+    return this.http.put(`${this.environmentService.apiUrl}/agenda/horario/${agendaId}`, params);
   }
 
   cleanAgenda(params: any): Observable<any> {
-    return this.http.post(
-      `${this.environmentService.apiUrl}/horario/${params.id_agenda}/remover`,
-      params
+    return this.http.delete(
+      `${this.environmentService.apiUrl}/agenda/horario/${params.id_servico}/${params.id_agenda}`,
+      { body: params }
     );
   }
 
   getHorario(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/horario/${id}`);
+  }
+
+  applyReservation(params: any, hourId: any): Observable<any> {
+    return this.http.post(
+      `${this.environmentService.apiUrl}/agenda/horario/reservar/${hourId}`,
+      params
+    );
   }
 
   getReservations(): Observable<any> {

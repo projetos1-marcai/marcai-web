@@ -9,17 +9,15 @@ import { AgendaService } from 'src/app/core/services/agenda/agenda.service';
 
 // type SearchType = 'service' | 'provider';
 
-const weekDays = new Map(
-  [
-    ["domingo", "Domingo"],
-    ["segunda", "Segunda"],
-    ["terca", "Terça"],
-    ["quarta", "Quarta"],
-    ["quinta", "Quinta"],
-    ["sexta", "Sexta"],
-    ["sabado", "Sábado"],
-  ]
-)
+const weekDays = new Map([
+  ['domingo', 'Domingo'],
+  ['segunda', 'Segunda'],
+  ['terca', 'Terça'],
+  ['quarta', 'Quarta'],
+  ['quinta', 'Quinta'],
+  ['sexta', 'Sexta'],
+  ['sabado', 'Sábado']
+]);
 
 @Component({
   selector: 'app-search',
@@ -43,7 +41,7 @@ export class ProfileComponent implements OnInit {
     private tokenService: TokenService,
     private userService: UserService,
     private agendaService: AgendaService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLoggedIn();
@@ -52,25 +50,20 @@ export class ProfileComponent implements OnInit {
     this.isProvider = this.user.fornecedor;
     this.getUser();
     this.loadClientReservations();
-
-
   }
 
   loadClientReservations(): void {
     this.agendaService.getReservations().subscribe((data) => {
-
       data.reservas.forEach((e: any) => {
         this.clientReservations.push({
           service: e.servico,
           weekDay: weekDays.get(e.dia),
-          reserva: e.reserva,
+          reserva: e.reserva
         });
         console.log(e);
-
-      })
-      console.log(this.clientReservations)
-    })
-
+      });
+      console.log(this.clientReservations);
+    });
   }
 
   getUser(): void {
@@ -172,16 +165,6 @@ export class ProfileComponent implements OnInit {
   }
 
   getSchedulingDuration(item: any): string {
-    // agenda: "62d31154c982436372620300"
-    // cliente: null
-    // createdAt: "2022-07-16T20:30:58.915Z"
-    // disponivel: true
-    // fim: "2022-07-16T10:00:00.000Z"
-    // inicio: "2022-07-16T08:00:00.000Z"
-    // updatedAt: "2022-07-16T20:30:58.915Z"
-    // __v: 0
-    // _id: "62d3200280b9eb38bfd368d2"
-
     var begin = new Date(item.inicio);
     var end = new Date(item.fim);
 
@@ -189,5 +172,9 @@ export class ProfileComponent implements OnInit {
     var endString = `${end.getHours()}:${end.getMinutes().toString().padStart(2, '0')}`;
 
     return beginString + ' - ' + endString;
+  }
+
+  goToService(item: any): void {
+    this.router.navigate([`service/${item.servico._id}`]);
   }
 }

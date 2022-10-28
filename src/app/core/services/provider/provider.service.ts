@@ -8,9 +8,12 @@ import { EnvironmentService } from '../environment/environment.service';
   providedIn: 'root'
 })
 export class ProviderService {
-
   api: string = environment.apiUrl;
-  constructor(private http: HttpClient, private environmentService: EnvironmentService) { }
+  constructor(private http: HttpClient, private environmentService: EnvironmentService) {}
+
+  getProviders(): Observable<any> {
+    return this.http.get(`${this.environmentService.apiUrl}/usuario/fornecedores`);
+  }
 
   getProvider(id: any): Observable<any> {
     return this.http.get(`${this.environmentService.apiUrl}/usuario/${id}`);

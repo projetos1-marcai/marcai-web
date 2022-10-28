@@ -90,6 +90,11 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged = this.tokenService.isLoggedIn();
     this.user = this.tokenService.getUserInfo();
+    console.log(this.user);
+    this.createForm.patchValue({
+      disponivel: true,
+      fornecedor: this.user.id_usuario || ''
+    });
   }
 
   onSubmit(): void {
@@ -98,35 +103,84 @@ export class CreateComponent implements OnInit {
       logo_url: this.createForm.get('logo')?.value.base64
     };
 
+    this.isLoading = true;
     this.serviceService.createService(params).subscribe(
       (data) => {
-        this.router.navigate([`service/${data.servico._id}`]);
+        this.createAgenda(data.servico);
       },
       (err) => {
-        this._snackBar.open('Ocorreu um erro, revise os dados e tente novamente.');
+        this.openSnackBar('Ocorreu um erro, verifique os dados ou tente mais tarde.');
+        this.isLoading = false;
       }
     );
   }
 
-  addSchedule(day: any): void {
-    const dialogRef = this.dialog.open(ScheduleComponent, {
-      width: 'auto',
-      data: { day }
-    });
+  createAgenda(service: any): void {
+    const availableDays = [];
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
+    for (const field in this.agendaForm.controls) {
+      const control = this.agendaForm.get(field)?.value;
+      if (control === true) {
+        availableDays.push(field);
+      }
+    }
+
+    availableDays.forEach((day, index) => {
+      const start = this.agendaForm.get(`${day}Start`)?.value;
+      const end = this.agendaForm.get(`${day}End`)?.value;
+      const translatedDay = this.translateDay(day);
+
+      const params = {
+        inicio: this.convertToAMPM(start),
+        fim: this.convertToAMPM(end),
+        dia: translatedDay
+      };
+      this.agendaService.createAgenda(params, service._id).subscribe((data: any) => {});
+
+      if (index === availableDays.length - 1) {
+        setTimeout(() => {
+          this.isLoading = false;
+          this.router.navigate([`service/${service._id}`]);
+        }, 3000);
       }
     });
   }
-
-  // UTILS METHODS
 
   openSnackBar(value: string) {
     this._snackBar.open(value, 'Fechar', {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
+  }
+
+  private convertToAMPM(value: any): string {
+    const num = Number(value.replace(':', ''));
+    let firstDigits = String(Number(value.slice(0, 2)) - 12);
+    firstDigits = firstDigits.length < 2 ? `0${firstDigits}` : firstDigits;
+    let result = num < 1200 ? `${value} AM` : `${firstDigits}:${value.substring(3, 5)} PM`;
+    return result;
+  }
+
+  private translateDay(day: any): string {
+    const days = [
+      'segunda',
+      'monday',
+      'terca',
+      'tuesday',
+      'quarta',
+      'wednesday',
+      'quinta',
+      'thursday',
+      'sexta',
+      'friday',
+      'sabado',
+      'saturday',
+      'domingo',
+      'sunday'
+    ];
+
+    const index = days.findIndex((u) => u == day);
+    return days[index - 1];
   }
 
   disableButton(): boolean {

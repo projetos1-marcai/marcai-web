@@ -28,7 +28,7 @@ export class ServiceService {
   }
 
   searchService(query: any): Observable<any> {
-    return this.http.get(`${this.environmentService.apiUrl}/servico/search/${query}`);
+    return this.http.get(`${this.environmentService.apiUrl}/servico/buscar/${query}`);
   }
 
   getServices(): Observable<any> {

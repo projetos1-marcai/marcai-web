@@ -1,7 +1,7 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="search-container layout-wrapper">
   <div class="settings-container bnp-flex bnp-gap-10 bnp-my-20 bnp-flex-center">
-    <bnp-button
+    <!-- <bnp-button
       type="stroked"
       [color]="type === 'service' ? 'orange' : 'transparent'"
       (click)="switchType('service')"
@@ -14,17 +14,16 @@
       (click)="switchType('provider')"
     >
       Fornecedor
-    </bnp-button>
+    </bnp-button> -->
 
     <bnp-button
-      *ngIf="isProvider"
+      *ngIf="isProvider && isLogged"
       type="outline"
-      style="margin-left: auto"
       [color]="'orange'"
       (click)="createService()"
     >
       <mat-icon>add</mat-icon>
-      Adicionar
+      Cadastrar um serviço
     </bnp-button>
   </div>
   <div class="search-container-field">
@@ -63,8 +62,7 @@
       Buscando por <span style="color: var(--primary-orange)">{{ lastSearch }}</span>
     </ng-container>
     <ng-container *ngIf="!lastSearch">
-      <ng-container *ngIf="type === 'service'"> Todos os serviços </ng-container>
-      <ng-container *ngIf="type === 'provider'"> Todos os fornecedores </ng-container>
+      <ng-container> Todos os serviços </ng-container>
     </ng-container>
   </h1>
   <!-- <div class="filters-container"></div> -->
@@ -73,17 +71,21 @@
     <ng-container *ngIf="this.type === 'service'">
       <div class="search-container-listing-item" *ngFor="let item of services">
         <div class="provider-wrapper">
-          <div class="image-wrapper">
-            <img [src]="item?.logo_url" />
-          </div>
           <div class="provider-wrapper-info">
             <h1>{{ item?.fornecedor }}</h1>
           </div>
         </div>
         <div class="service-info-wrapper" (click)="goToService(item)">
-          <h2>{{ item?.titulo }}</h2>
-          <p>{{ item?.descricao }}</p>
-          <span>{{ item?.valor | currency: 'BRL':'symbol' }}</span>
+          <div>
+            <div class="image-wrapper">
+              <img [src]="item?.servico.logo_url" />
+            </div>
+          </div>
+          <div>
+            <h2>{{ item?.servico.titulo }}</h2>
+            <p>{{ item?.servico.descricao }}</p>
+            <span>{{ item?.servico.valor | currency: 'BRL':'symbol' }}</span>
+          </div>
         </div>
       </div>
       <div class="search-container-empty" *ngIf="this.services.length === 0">

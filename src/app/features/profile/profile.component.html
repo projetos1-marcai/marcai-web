@@ -34,9 +34,15 @@
     <h3 *ngIf="clientReservations.length === 0">Nenhum reserva feita</h3>
     <div class="clientReservations-list" [ngClass]="{ disabled: clientReservations.length === 0 }">
       <div class="clientReservations-list-line" *ngFor="let item of clientReservations">
-        <p class="clientReservations-list-line-title">{{item.service}}</p>
-        <p>{{ getSchedulingDuration(item.reserva)}}</p>
-        <p>{{item.weekDay}}</p>
+        <p class="clientReservations-list-line-title">{{ item.service }}</p>
+        <!-- <p>{{ getSchedulingDuration(item.reserva)}}</p> -->
+        <div class="service-schedule-day-hour bnp-gap-10">
+          <mat-icon>calendar_today</mat-icon>
+          <p>{{ item.reserva.inicio | date: 'HH:mm':'UTC' }}</p>
+          <p>até</p>
+          <p>{{ item.reserva.fim | date: 'HH:mm':'UTC' }}</p>
+        </div>
+        <p>{{ item.weekDay }}</p>
 
         <!-- <p class="clientReservations-table-line-title">{{ item.servico.titulo }}</p>
         <p class="clientReservations-table-line-reservations" *ngFor="let res of reservations.get(item.servico._id)">
@@ -54,11 +60,14 @@
       <h2 class="title-container">Meus serviços</h2>
       <div class="services-table" [ngClass]="{ disabled: services.length === 0 }">
         <h3 *ngIf="services.length === 0">Nenhum serviço cadastrado</h3>
-        <div class="services-table-line" *ngFor="let item of services">
+        <div class="services-table-line" *ngFor="let item of services" (click)="goToService(item)">
           <p>{{ item.servico.titulo }}</p>
 
           <p class="services-table-line-title">{{ item.servico.titulo }}</p>
-          <p class="services-table-line-reservations" *ngFor="let res of reservations.get(item.servico._id)">
+          <p
+            class="services-table-line-reservations"
+            *ngFor="let res of reservations.get(item.servico._id)"
+          >
             cliente:
             {{ res.cliente }}
             / horário:
@@ -85,3 +94,4 @@
     </button>
   </div> -->
   </div>
+</div>

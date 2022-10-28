@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CATEGORIES } from 'src/app/shared/util/util';
 import { ServiceService } from '../../core/services/service/service.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +33,8 @@ export class ExploreComponent implements OnInit {
     private serviceService: ServiceService,
     private router: Router,
     private tokenService: TokenService,
-    private userService: UserService
+    private userService: UserService,
+    private _snackBar: MatSnackBar
   ) {
     this.route.queryParams.subscribe((params: any) => {
       this.search = params.q ? params.q : '';
@@ -46,9 +48,6 @@ export class ExploreComponent implements OnInit {
     this.userId = this.user.id_usuario;
     this.isProvider = this.user.fornecedor;
 
-    console.log(this.user);
-    console.log(this.isProvider);
-    console.log(this.isLogged);
     this.handleSearch();
   }
 
@@ -64,6 +63,7 @@ export class ExploreComponent implements OnInit {
 
   searchServices(): void {
     this.isLoading = true;
+    console.log(this.search);
     this.serviceService.searchService(this.search).subscribe(
       (data: any) => {
         this.services = data.servicos;
@@ -102,7 +102,7 @@ export class ExploreComponent implements OnInit {
 
   filterServicesByCategory(): void {
     this.services = this.services.filter((item: any) => {
-      return item.categoria === this.category;
+      return item.servico.categoria === this.category;
     });
   }
 
@@ -112,6 +112,6 @@ export class ExploreComponent implements OnInit {
   }
 
   goToService(item: any): void {
-    this.router.navigate([`service/${item._id}`]);
+    this.router.navigate([`service/${item.servico._id}`]);
   }
 }

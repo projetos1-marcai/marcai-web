@@ -8,9 +8,19 @@
     <button
       *ngIf="isLogged && user.fornecedor === true && user.id_usuario === service.fornecedor"
       mat-flat-button
+      class="custom-rounded-outline-button danger"
+      (click)="deleteService()"
+      style="margin-left: auto"
+    >
+      Excluir serviço
+    </button>
+
+    <button
+      *ngIf="isLogged && user.fornecedor === true && user.id_usuario === service.fornecedor"
+      mat-flat-button
       class="custom-flat-button"
       (click)="editService()"
-      style="margin-left: 4px"
+      style="margin-left: 10px"
     >
       Editar serviço
     </button>
@@ -38,17 +48,153 @@
     </div>
   </div>
   <div class="service-schedule">
-    <h2 class="title-container">Horários</h2>
-  </div>
+    <h2 class="title-container">Horários de atendimento</h2>
 
-  <footer class="bnp-flex bnp-mt-30">
-    <button
-      mat-flat-button
-      class="custom-flat-button"
-      (click)="onSubmit()"
-      style="margin-left: auto"
-    >
-      Realizar agendamento
-    </button>
-  </footer>
+    <div class="service-schedule-day" *ngIf="agenda.segunda.length > 0">
+      <div class="title-item bnp-pt-30">Segunda-feira</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.segunda[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.segunda[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.segunda[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+
+    <div class="service-schedule-day" *ngIf="agenda.terca.length > 0">
+      <div class="title-item bnp-pt-30">Terça-feira</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.terca[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.terca[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.terca[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+
+    <div class="service-schedule-day" *ngIf="agenda.quarta.length > 0">
+      <div class="title-item bnp-pt-30">Quarta-feira</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.quarta[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.quarta[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.quarta[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+
+    <div class="service-schedule-day" *ngIf="agenda.quinta.length > 0">
+      <div class="title-item bnp-pt-30">Quinta-feira</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.quinta[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.quinta[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.quinta[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+
+    <div class="service-schedule-day" *ngIf="agenda.sexta.length > 0">
+      <div class="title-item bnp-pt-30">Sexta-feira</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.sexta[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.sexta[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.sexta[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+
+    <div class="service-schedule-day" *ngIf="agenda.sabado.length > 0">
+      <div class="title-item bnp-pt-30">Sábado</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.sabado[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.sabado[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.sabado[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+
+    <div class="service-schedule-day" *ngIf="agenda.domingo.length > 0">
+      <div class="title-item bnp-pt-30">Domingo</div>
+
+      <div class="service-schedule-day-hour bnp-gap-20">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ agenda.domingo[0].inicio | date: 'HH:mm':'UTC' }}</p>
+        <p>até</p>
+        <p>{{ agenda.domingo[0].fim | date: 'HH:mm':'UTC' }}</p>
+      </div>
+
+      <button
+        mat-flat-button
+        class="custom-rounded-outline-button"
+        (click)="onSubmit(agenda.domingo[0])"
+        style="width: 300px"
+        *ngIf="isLogged && user.id_usuario !== service.fornecedor"
+      >
+        Solicitar reserva
+      </button>
+    </div>
+  </div>
 </div>

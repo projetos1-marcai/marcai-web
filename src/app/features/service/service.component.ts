@@ -1,3 +1,5 @@
+import { AgendaService } from 'src/app/core/services/agenda/agenda.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
@@ -22,16 +24,16 @@ export class ServiceComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private serviceService: ServiceService,
+    private agendaService: AgendaService,
     private tokenService: TokenService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.serviceId = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.isLogged = this.tokenService.isLoggedIn();
     this.user = this.tokenService.getUserInfo();
-    console.log(this.isLogged);
-    console.log(this.user);
     this.getService();
   }
 
@@ -40,13 +42,26 @@ export class ServiceComponent implements OnInit {
     this.serviceService.getService(this.serviceId).subscribe((data) => {
       this.agenda = data.agenda;
       this.service = data.servico;
-      console.log(data);
       this.isLoading = false;
     });
   }
 
   editService(): void {
     this.router.navigate([`service/${this.serviceId}/edit`]);
+  }
+
+  deleteService(): void {
+    if (confirm('Tem certeza que deseja excluir esse serviço?')) {
+      this.serviceService.deleteService(this.serviceId).subscribe(
+        (data) => {
+          this.openSnackBar('Serviço excluido com sucesso.');
+          this.backToList();
+        },
+        () => {
+          this.openSnackBar('Ocorreu um erro ao excluir o serviço');
+        }
+      );
+    }
   }
 
   goToProvider(): void {
@@ -57,18 +72,55 @@ export class ServiceComponent implements OnInit {
     this.router.navigate([`explore`]);
   }
 
-  onSubmit(): void {
+  onSubmit(hour: any): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
-    dialogConfig.height = '550px';
+    dialogConfig.height = '450px';
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
-    dialogConfig.data = {};
+    dialogConfig.data = hour;
 
     const dialogRef = this.dialog.open(ScheduleComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
+      console.log(hour);
       console.log(data);
+
+      if (data) {
+        this.isLoading = true;
+        const tempDay = new Date(hour.inicio).toISOString().split('T')[0].split('-');
+        const day = `${tempDay[2]}-${tempDay[1]}-${tempDay[0]}`;
+
+        const params = {
+          inicio: `${day} ${data.startHour}:${data.startMinute}`,
+          fim: `${day} ${data.endHour}:${data.endMinute}`
+        };
+
+        this.agendaService.applyReservation(params, hour._id).subscribe(
+          (data) => {
+            console.log(data);
+            this.openSnackBar(
+              'Reserva solicitada com sucesso, você pode consultar suas reservas no menu de perfil'
+            );
+            this.isLoading = false;
+          },
+          (err) => {
+            this.openSnackBar(
+              err.error.message
+                ? err.error.message
+                : 'Ocorreu um erro ao tentar reservar o horário.'
+            );
+            this.isLoading = false;
+          }
+        );
+      }
+    });
+  }
+
+  openSnackBar(value: string) {
+    this._snackBar.open(value, 'Fechar', {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
     });
   }
 }
